@@ -1,0 +1,12 @@
+.this {
+  background: var(--hhl);
+  display: inline-block;
+  border-right: 1px solid var(--hl);
+}
+.this ul {
+  padding: 0;
+  padding-left: 3ch;
+}
+.note {
+  padding-right: 1ch;
+}

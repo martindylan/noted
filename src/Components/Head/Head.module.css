@@ -1,0 +1,17 @@
+.this {
+  background: var(--hhl);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--hl);
+  flex-grow: 1;
+}
+.this h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0.5ch;
+  font-size: 3em;
+}
+.this span {
+  font-size: 1.2em;
+  margin-left: 1ch;
+}

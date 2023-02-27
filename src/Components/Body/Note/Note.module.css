@@ -1,0 +1,16 @@
+.this {
+  padding: 1ch;
+  margin-top: 4em;
+}
+.this input {
+  background: var(--bg);
+  color: var(--fg);
+  border: none;
+}
+.this input:hover {
+  background: var(--hhl);
+}
+.this input:focus {
+  outline: none;
+  background: var(--hl);
+}
