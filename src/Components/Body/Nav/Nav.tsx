@@ -1,9 +1,9 @@
-import React from 'react'
-import { useItems } from '../../../ItemsContext'
+import { useNotes } from '../NotesContext'
 import styles from './Nav.module.css'
 
 export default function Nav() {
-  const { notes } = useItems();
+
+  const { notes, setNotes } = useNotes();
 
   return (
     <div className={styles.this}>

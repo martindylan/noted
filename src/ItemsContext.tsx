@@ -5,6 +5,7 @@ const ItemsContext = createContext<any>(null);
 export function useItems() {
   return useContext(ItemsContext);
 }
+
 type ItemsProviderProps = {
   children: any;
 }
@@ -24,4 +25,17 @@ export const ItemsProvider: FunctionComponent<ItemsProviderProps> = ({ children 
       {children}
     </ItemsContext.Provider>
   )
+}
+
+export const myData = {
+  notes: {
+    0:
+    {
+      title: 'Welcome!',
+      items:
+      {
+        0: `I'm an item.\nYou can edit, move or delete me`
+      }
+    }
+  }
 }
