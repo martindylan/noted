@@ -1,7 +1,8 @@
 import { useState, FunctionComponent, useEffect, useRef, useCallback } from 'react';
+import { useContent } from '../../ContentContext';
 import styles from './Item.module.css';
+// Components
 import Tools from './Tools/Tools';
-import { useItems } from '../../../../../ItemsContext';
 
 interface IItemProps {
   id: number;
@@ -11,7 +12,7 @@ interface IItemProps {
 
 const Item: FunctionComponent<IItemProps> = (props) => {
   const [toolVisibility, setToolVisibility] = useState('hidden');
-  const { notes, setNotes } = useItems();
+  const { content, setContent } = useContent();
   const { id } = props;
 
   const mainRef = useRef<HTMLDivElement>(null);
@@ -37,7 +38,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     const input = inputRef.current;
     input?.focus();
     if (input) {
-      input.innerText = notes[0].items[id]
+      input.innerText = content.items[id].content
     }
     return () => {
       main?.removeEventListener('mouseenter', showTool);
@@ -48,11 +49,11 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   }, [])
 
   const updateItems = useCallback((e: any) => {
-    let newItems = { ...notes[0].items };
-    newItems[id] = e.target.innerText;
-    setNotes({ ...notes, 0: { items: newItems } });
-  }, [notes[0].items, id, setNotes]);
-  // Add event listener on input to update items object
+    let newItems = { ...content.items };
+    newItems[id].content = e.target.innerText;
+    setContent({ ...content, items: newItems });
+  }, [content, id, setContent]);
+
   useEffect(() => {
     const input = inputRef.current;
     input?.addEventListener('input', updateItems);

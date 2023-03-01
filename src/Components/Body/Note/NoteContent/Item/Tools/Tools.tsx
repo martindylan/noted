@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import styles from './Tools.module.css';
+// Resources
 import trashcanImg from './img/trashcan.png';
 import changeImg from './img/change.png';
 import moveImg from './img/move.png'
@@ -13,7 +14,8 @@ type ToolsProps = {
 const Tools: FunctionComponent<ToolsProps> = (props) => {
 
   const remove = () => {
-    props.removeItem(props.id);
+    const confirmation = window.confirm('Are you sure you want to delete this item?');
+    if (confirmation) props.removeItem(props.id);
   }
 
   return (

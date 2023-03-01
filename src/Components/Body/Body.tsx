@@ -1,16 +1,17 @@
-import Note from './Note/Note';
-import Nav from './Nav/Nav';
+import { useNotes } from '../../NotesContext';
 import styles from './Body.module.css';
-import { NotesProvider, useNotes } from './NotesContext';
+// Components
+import Nav from './Nav/Nav';
+import Note from './Note/Note';
 
 export default function Body() {
 
+  const { notes, } = useNotes();
+
   return (
     <div className={styles.this}>
-      <NotesProvider>
-        <Nav></Nav>
-        <Note note={0}></Note>
-      </NotesProvider>
+      <Nav></Nav>
+      {Object.keys(notes).map((note: any) => { return <Note key={note} note={note}></Note> })}
     </div>
   )
 }

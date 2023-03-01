@@ -1,20 +1,22 @@
 import { FunctionComponent } from 'react';
-import Content from './Content/Content';
-import Title from './Title/Title';
 import styles from './Note.module.css';
-import { useNotes } from '../NotesContext';
+// Components
+import { ContentProvider } from './ContentContext';
+import NoteTitle from './NoteTitle/NoteTitle';
+import NoteContent from './NoteContent/NoteContent';
 
 interface INoteProps {
   note: number;
 }
 
 const Note: FunctionComponent<INoteProps> = (props) => {
-  const { notes, setNotes } = useNotes();
 
   return (
     <div className={styles.this}>
-      <Title>{notes[props.note].title}</Title>
-      <Content></Content>
+      <ContentProvider note={props.note}>
+        <NoteTitle></NoteTitle>
+        <NoteContent></NoteContent>
+      </ContentProvider>
     </div>
   )
 }

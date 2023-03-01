@@ -1,16 +1,17 @@
+import styles from './App.module.css';
+// Components
 import Body from './Components/Body/Body';
 import Head from './Components/Head/Head';
-import { ItemsProvider } from './ItemsContext';
-import styles from './App.module.css';
+import { NotesProvider } from './NotesContext';
 
 function App() {
   return (
-    <ItemsProvider>
-      <div className={styles.App}>
-        <Head></Head>
+    <div className={styles.App}>
+      <Head></Head>
+      <NotesProvider>
         <Body></Body>
-      </div>
-    </ItemsProvider>
+      </NotesProvider>
+    </div>
   );
 }
 

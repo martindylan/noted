@@ -1,0 +1,26 @@
+.this {
+  margin-left: 6zem;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  font-size: 2em;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  min-width: 3ch;
+  max-width: 36ch;
+  word-break: break-word;
+}
+.text:hover {
+  background: var(--hhl);
+}
+.text:focus {
+  outline: none;
+  background: var(--hl);
+}
+.text:empty::before {
+  content: '...';
+  display: inline-block;
+  color: var(--mg)
+}
