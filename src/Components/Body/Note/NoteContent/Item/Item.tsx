@@ -6,8 +6,8 @@ import Tools from './Tools/Tools';
 
 interface IItemProps {
   id: number;
-  children: any;
   removeItem: any;
+  type: string;
 }
 
 const Item: FunctionComponent<IItemProps> = (props) => {
@@ -36,9 +36,10 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     main?.addEventListener('mouseleave', hideTool);
     main?.addEventListener('focusout', hideTool);
     const input = inputRef.current;
+    const text = content.items[id].content;
     input?.focus();
-    if (input) {
-      input.innerText = content.items[id].content
+    if (input && text) {
+      input.innerText = text;
     }
     return () => {
       main?.removeEventListener('mouseenter', showTool);
@@ -62,9 +63,23 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     }
   }, [updateItems])
 
+  const makeItem = () => {
+    switch (props.type) {
+      case 'text':
+        return <span ref={inputRef} className={styles.text} contentEditable></span>;
+      case 'bulleted':
+        return <><div className={styles.bullet}></div><span ref={inputRef} className={styles.text} contentEditable></span></>
+      case 'subtitle':
+        return <span ref={inputRef} className={`${styles.text} ${styles.subtitle}`} contentEditable></span>;
+      default:
+        return <span ref={inputRef} className={styles.text} contentEditable></span>;
+    }
+  }
+
   return (
     <div ref={mainRef} className={styles.this}>
-      <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem}></Tools><span ref={inputRef} className={styles.text} contentEditable></span>
+      <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem}></Tools>
+      {makeItem()}
     </div>
   )
 }

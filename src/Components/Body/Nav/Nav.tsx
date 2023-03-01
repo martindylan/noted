@@ -1,9 +1,10 @@
-import { useNotes } from '../../../NotesContext';
+import { useGlobal } from '../../../GlobalContext';
 import styles from './Nav.module.css'
 
 export default function Nav() {
 
-  const { notes, } = useNotes();
+  const { global, } = useGlobal();
+  const notes = global.notes;
 
   return (
     <div className={styles.this}>
@@ -12,6 +13,8 @@ export default function Nav() {
           return <li className={styles.note} key={note}>{notes[note].title}</li>;
         })}
       </ul>
+      <button>Coming to Android soon!</button>
+      <button className={styles.link}>About</button>
     </div>
   )
 }

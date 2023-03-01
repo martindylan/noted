@@ -1,11 +1,13 @@
 .this {
-  margin-left: 6zem;
+  margin-left: 6em;
   margin-bottom: 1em;
   display: flex;
   align-items: flex-start;
 }
 .text {
   font-size: 2em;
+  font-weight: bold;
+  text-decoration: underline;
   border-radius: 0.2rem;
   padding: 0.5rem;
   min-width: 3ch;

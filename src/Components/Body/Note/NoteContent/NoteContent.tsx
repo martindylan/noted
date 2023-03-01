@@ -18,9 +18,9 @@ export default function NoteContent() {
   return (
     <div>
       {Object.keys(items).map((item: any, i: number) => {
-        return <Item id={item} key={item} removeItem={removeItem}>{item.content}</Item>
+        return <Item id={item} key={item} removeItem={removeItem} type={items[item].type} />
       })}
-      <NewItem></NewItem>
+      <NewItem />
     </div>
   )
 }

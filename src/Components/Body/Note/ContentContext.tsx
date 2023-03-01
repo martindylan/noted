@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, FunctionComponent } from 'react'
-import { useNotes } from '../../../NotesContext';
+import { useGlobal } from '../../../GlobalContext';
 
 
 const ContentContext = createContext<any>(null);
@@ -13,7 +13,8 @@ type ContentProviderProps = {
   note: number;
 }
 export const ContentProvider: FunctionComponent<ContentProviderProps> = (props) => {
-  const { notes, } = useNotes();
+  const { global, } = useGlobal();
+  const notes = global.notes;
   const [content, setContent] = useState({ ...notes[props.note] });
 
   return (

@@ -12,15 +12,32 @@
   max-width: 62ch;
   word-break: break-word;
 }
+
 .text:hover {
   background: var(--hhl);
 }
+
 .text:focus {
   outline: none;
   background: var(--hl);
 }
+
 .text:empty::before {
   content: '...';
   display: inline-block;
   color: var(--mg)
+}
+
+.bullet {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 100%;
+  background: var(--fg);
+  margin-left: 0.88em;
+  margin-top: 1em;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  font-weight: bold;
 }

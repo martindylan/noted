@@ -1,12 +1,30 @@
 .this {
   background: var(--hhl);
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid var(--hl);
 }
 .this ul {
   padding: 0;
   padding-left: 3ch;
+  flex-grow: 1;
 }
 .note {
   padding-right: 1ch;
+}
+.this button {
+  flex-grow: 0;
+  background: none;
+  border: none;
+  color: var(--fg);
+  margin: 0 0.3em 0.3em;
+}
+.this button:last-of-type {
+  margin-bottom: 0.6em;
+}
+.link {
+  text-decoration: underline;
+}
+.link:hover {
+  cursor: pointer;
 }

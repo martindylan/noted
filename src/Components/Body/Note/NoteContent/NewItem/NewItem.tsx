@@ -10,7 +10,7 @@ const NewItem: FunctionComponent<any> = () => {
     const keys = Object.keys(content.items);
     if (keys) {
       const newId = keys[keys.length - 1] + 1;
-      newItems[newId] = '';
+      newItems[newId] = {content:'', type:'text'};
     } else {
       newItems[0] = '';
     }
