@@ -13,6 +13,8 @@ export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ childr
   const storedData = window.localStorage.getItem('data');
   const [global, setGlobal] = useState(storedData ? JSON.parse(storedData) : defaultData);
 
+  localStorage.setItem('data', JSON.stringify(global));
+
   return (
     <GlobalContext.Provider value={{ global: global, setGlobal: setGlobal }}>
       {children}
@@ -22,18 +24,19 @@ export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ childr
 
 const defaultData = {
   lang: 'EN',
+  currentNote: 0,
+  currentItem: 0,
   notes:
-  {
-    0:
-    {
-      title: 'Welcome!',
-      items:
+    [
       {
-        0: {
-          content: `I'm an item.\nYou can edit, move or delete me`,
-          type: 'subtitle'
-        }
+        title: `I'm your first note`,
+        items:
+        [
+          {
+            content: `And I'm an item.\nYou can change my type, edit, move or delete me.`,
+            type: 'text'
+          }
+        ]
       }
-    }
-  }
+    ]
 }

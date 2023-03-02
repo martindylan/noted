@@ -6,11 +6,11 @@
 
 .text {
   border-radius: 0.2rem;
-  padding: 0.5rem;
-  margin-left: 0.25rem;
+  padding: 0.25rem 0.5rem;
   min-width: 3ch;
   max-width: 62ch;
   word-break: break-word;
+  transition-duration: 100ms;
 }
 
 .text:hover {
@@ -28,16 +28,17 @@
   color: var(--mg)
 }
 
-.bullet {
+.bulleted {
   width: 0.5em;
   height: 0.5em;
   border-radius: 100%;
   background: var(--fg);
   margin-left: 0.88em;
-  margin-top: 1em;
+  margin-right: 0.2em;
+  margin-top: 0.7em;
 }
 
-.subtitle {
+.heading {
   font-size: 1.5em;
   font-weight: bold;
 }

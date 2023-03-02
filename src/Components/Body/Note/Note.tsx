@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import styles from './Note.module.css';
 // Components
-import { ContentProvider } from './ContentContext';
+import { NoteContextProvider } from './NoteContext';
 import NoteTitle from './NoteTitle/NoteTitle';
 import NoteContent from './NoteContent/NoteContent';
 
@@ -10,13 +10,12 @@ interface INoteProps {
 }
 
 const Note: FunctionComponent<INoteProps> = (props) => {
-
   return (
     <div className={styles.this}>
-      <ContentProvider note={props.note}>
+      <NoteContextProvider note={props.note}>
         <NoteTitle></NoteTitle>
         <NoteContent></NoteContent>
-      </ContentProvider>
+      </NoteContextProvider>
     </div>
   )
 }

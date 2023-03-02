@@ -1,26 +1,40 @@
-import { useContent } from '../ContentContext';
+import { useNote } from '../NoteContext';
 // Components
 import Item from './Item/Item';
-import NewItem from './NewItem/NewItem';
+import AddItem from './AddItem/AddItem';
+import { useState } from 'react';
 
 export default function NoteContent() {
-  console.log("note content rendered");
-  const { content, setContent } = useContent();
-  const items = content.items;
+  const { note, setNote } = useNote();
+  const [ items, setItems ] = useState(note.items);
+
+  // Add item
+  const addItem = (type: string) => {
+    let newItems = [...note.items];
+    const keys = Object.keys(note.items);
+    if (keys) {
+      newItems[newItems.length] = { content: '', type: type };
+    } else {
+      newItems[0] = '';
+    }
+    setNote({ ...note, items: newItems });
+    setItems(newItems);
+  }
 
   // Remove item
   const removeItem = (id: number) => {
-    let newItems = { ...items };
-    delete newItems[id];
-    setContent({ ...content, items: newItems });
+    let newItems = [...items];
+    newItems.splice(id, 1);
+    setNote({ ...note, items: newItems });
+    setItems(newItems);
   }
 
   return (
-    <div>
-      {Object.keys(items).map((item: any, i: number) => {
-        return <Item id={item} key={item} removeItem={removeItem} type={items[item].type} />
+    <>
+      {items.map((item: any, i: number) => {
+        return <Item id={i} key={i} removeItem={removeItem} type={item.type} addItem={addItem} />
       })}
-      <NewItem />
-    </div>
+      <AddItem addItem={addItem} />
+    </>
   )
 }

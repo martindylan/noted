@@ -1,0 +1,50 @@
+.this {
+  display: flex;
+  margin: 0 0.5em 0.25em;
+}
+
+.bullet {
+  aspect-ratio: 1/1;
+  height: 0.5em;
+  border-radius: 100%;
+  background: none;
+  flex-shrink: 0;
+  margin-top: 0.65em;
+  width: 0;
+  transition-duration: 200ms;
+}
+.bullet.currenttrue {
+  width: 0.5em;
+  background: var(--fg);
+}
+
+.title {
+  margin-left: 0.3em;
+  padding: 0.3em 0.3em;
+  border-radius: 0.2rem;
+  word-break: break-word;
+  transition-duration: 100ms;
+}
+
+.title:hover {
+  cursor: pointer;
+  background: var(--hhl);
+}
+
+.title:empty::before {
+  content: '...';
+  display: inline-block;
+  color: var(--mg)
+}
+
+.this img {
+  margin-left: 0.5em;
+  width: 1em;
+}
+
+.currenttrue {
+  background: var(--hl);
+}
+.currenttrue:hover {
+  background: var(--hl);
+}

@@ -1,9 +1,9 @@
 .this {
-  margin-left: 6em;
   margin-bottom: 1em;
   display: flex;
   align-items: flex-start;
 }
+
 .text {
   font-size: 2em;
   font-weight: bold;
@@ -13,14 +13,18 @@
   min-width: 3ch;
   max-width: 36ch;
   word-break: break-word;
+  transition-duration: 100ms;
 }
+
 .text:hover {
   background: var(--hhl);
 }
+
 .text:focus {
   outline: none;
   background: var(--hl);
 }
+
 .text:empty::before {
   content: '...';
   display: inline-block;

@@ -8,13 +8,16 @@ export default function Body() {
 
   const { global, } = useGlobal();
   const notes = global.notes;
+  const currentNote = global.currentNote;
 
   return (
     <div className={styles.this}>
       <div className={styles.nav}>
         <Nav></Nav>
       </div>
-      {Object.keys(notes).map((note: any) => { return <Note key={note} note={note}></Note> })}
+      <div className={styles.noteParent}>
+        <Note key={currentNote} note={currentNote}></Note>
+      </div>
     </div>
   )
 }

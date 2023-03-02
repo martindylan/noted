@@ -19,10 +19,10 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
   }
 
   return (
-    <div className={[styles.this, styles[props.visibility]].join(' ')}>
-      <button className={styles.clickable} onClick={remove}><img draggable="false" src={trashcanImg} alt="delete"></img></button>
-      <button className={styles.clickable} onClick={(e) => console.log("change item")}><img draggable="false" src={changeImg} alt="change"></img></button>
-      <button className={styles.draggable} onClick={(e) => console.log("move item")}><img draggable="false" src={moveImg} alt="move"></img></button>
+    <div className={`${styles.this} ${styles[props.visibility]}`}>
+      <button className={styles.clickable} onClick={remove}><img className={styles.first} draggable="false" src={trashcanImg} alt="delete"></img></button>
+      <button className={styles.clickable} onClick={(e) => console.log("change item")}><img className={styles.second} draggable="false" src={changeImg} alt="change"></img></button>
+      <button className={styles.draggable} onClick={(e) => console.log("move item")}><img className={styles.last} draggable="false" src={moveImg} alt="move"></img></button>
     </div>
   )
 }

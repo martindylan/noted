@@ -1,22 +1,30 @@
 .this {
+  display: flex;
+  margin-top: 0.3em;
+}
+
+.add {
   user-select: none;
   font-weight: bold;
-  display: inline-block;
+  /* display: inline-block; */
+  flex-grow: 0;
+  height: 1.5em;
   background: var(--bg);
   border: none;
   border-radius: 0.2rem;
   color: var(--mg);
   aspect-ratio: 1 / 1;
   text-align: center;
-  margin-left: 5.4em;
-  margin-top: 0.3em;
+  transition-duration: 100ms;
 }
 
-.this:hover {
+.add:hover {
   cursor: pointer;
   background: var(--hl);
+  color: var(--fg);
 }
-.this:focus {
+.add:focus {
   outline: none;
   background: var(--hl);
+  color: var(--fg);
 }
