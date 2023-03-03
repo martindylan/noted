@@ -26,6 +26,7 @@
   animation-fill-mode: forwards;
   display: flex;
   transform: translateY(calc(-100% + 1.55em));
+  box-shadow: 0 0 1em 0.2em #000;
 }
 
 .this button {
