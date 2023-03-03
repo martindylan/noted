@@ -85,7 +85,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     }
   }, [props])
 
-  // Set input's event listener for input, on event calls updateItems();
+  // Set input's event listener for input and keypressed
   useEffect(() => {
     const input = inputRef.current;
     input?.addEventListener('input', updateItems);
