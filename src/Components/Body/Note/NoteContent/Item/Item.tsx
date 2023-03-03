@@ -20,9 +20,10 @@ const Item: FunctionComponent<IItemProps> = (props) => {
 
   const mainRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLSpanElement>(null);
+
   // Set global current item to this item
   const setToCurrent = (e: any) => {
-    setGlobal({...global, currentItem: id});
+    setGlobal({ ...global, currentItem: id });
     showTool(e);
   }
   // Show and hide item tools when hovering/focusing
@@ -77,12 +78,12 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   }, [note, id, setNote]);
 
   // Manage key presses
-  const keyPressed = (e: any) => {
+  const keyPressed = useCallback((e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       props.addItem('');
     }
-  }
+  }, [props])
 
   // Set input's event listener for input, on event calls updateItems();
   useEffect(() => {
@@ -93,7 +94,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
       input?.removeEventListener('input', updateItems);
       input?.removeEventListener('keypress', keyPressed);
     }
-  }, [updateItems])
+  }, [updateItems, keyPressed])
 
   // Return JSX according to item type
   const makeItem = () => {
