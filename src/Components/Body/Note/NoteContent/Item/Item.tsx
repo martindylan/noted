@@ -29,7 +29,6 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   const showTool = (e: any) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setToolVisibility('visible');
-      
     }
   }
   const hideTool = (e: any) => {
