@@ -7,13 +7,9 @@ import { GlobalProvider } from './GlobalContext';
 function App() {
   return (
     <div className={styles.App}>
-      <div className={styles.head}>
-        <Head></Head>
-      </div>
+      <Head></Head>
       <GlobalProvider>
-        <div className={styles.body}>
-          <Body></Body>
-        </div>
+        <Body></Body>
       </GlobalProvider>
     </div>
   );

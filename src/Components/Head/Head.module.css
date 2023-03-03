@@ -1,6 +1,7 @@
 .this {
   background: var(--hhl);
   display: flex;
+  flex-grow: 0;
   align-items: center;
   border-bottom: 1px solid var(--hl);
   user-select: none;
