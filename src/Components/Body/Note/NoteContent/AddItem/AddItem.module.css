@@ -6,7 +6,6 @@
 .add {
   user-select: none;
   font-weight: bold;
-  /* display: inline-block; */
   flex-grow: 0;
   height: 1.5em;
   background: var(--bg);

@@ -19,8 +19,20 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
     setActive(false);
   }
 
+  const focusOut = (e: any) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setActive(false);
+    }
+  }
+
+  const keyDown = (e: any) => {
+    if (e.key === 'Escape') {
+      setActive(false);
+    }
+  }
+  console.log("additem render")
   return (
-    <div className={styles.this}>
+    <div onBlur={focusOut} onKeyDown={keyDown} className={styles.this}>
       <button className={styles.add} onClick={activate}>+</button>
       {active && <ItemTypeMenu sendTypeToParent={getItemType} />}
     </div>
