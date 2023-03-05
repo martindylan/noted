@@ -1,31 +1,32 @@
 .this {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 0.2em;
 }
 
-.text {
+.input {
+  background: none;
+  outline: none;
+  border: none;
+  color: var(--fg);
+  /* display: block; */
   border-radius: 0.2rem;
   padding: 0.25rem 0.5rem;
   min-width: 3ch;
   max-width: 62ch;
   word-break: break-word;
+  transition-property: background-color;
   transition-duration: 100ms;
+  resize: none;
+  overflow:hidden;
 }
 
-.text:hover {
+.input:hover {
   background: var(--hhl);
 }
-
-.text:focus {
+.input:focus {
   outline: none;
   background: var(--hl);
-}
-
-.text:empty::before {
-  content: '...';
-  display: inline-block;
-  color: var(--mg)
 }
 
 .bulleted {
@@ -35,10 +36,10 @@
   background: var(--fg);
   margin-left: 0.88em;
   margin-right: 0.2em;
-  margin-top: 0.7em;
 }
 
 .heading {
   font-size: 1.5em;
   font-weight: bold;
+  max-width: 48ch;
 }
