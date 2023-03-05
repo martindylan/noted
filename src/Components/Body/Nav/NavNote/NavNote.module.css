@@ -42,9 +42,9 @@
   width: 1em;
 }
 
-.currenttrue {
+.title.currenttrue {
   background: var(--hl);
 }
-.currenttrue:hover {
+.title.currenttrue:hover {
   background: var(--hl);
 }
