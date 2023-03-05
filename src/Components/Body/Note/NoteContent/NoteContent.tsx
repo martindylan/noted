@@ -6,18 +6,14 @@ import { useState } from 'react';
 
 export default function NoteContent() {
   const { note, setNote } = useNote();
-  const [ items, setItems ] = useState(note.items);
+  const [items, setItems] = useState(note.items);
 
   // Add item
-  const addItem = (type: string) => {
+  const addItem = (type: string | null, pos: number | null) => {
     let newItems = [...note.items];
-    const keys = Object.keys(note.items);
-    if (keys) {
-      newItems[newItems.length] = { content: '', type: type };
-    } else {
-      newItems[0] = '';
-    }
-    setNote({ ...note, items: newItems });
+    let i = pos ? pos : newItems.length;
+    newItems.splice(i, 0, { content: '', type: type, done: false });
+    setNote({ ...note, items: newItems, focus: i });
     setItems(newItems);
   }
 
@@ -25,14 +21,15 @@ export default function NoteContent() {
   const removeItem = (id: number) => {
     let newItems = [...items];
     newItems.splice(id, 1);
-    setNote({ ...note, items: newItems });
+    setNote({ ...note, items: newItems, focus: id-1 });
     setItems(newItems);
   }
 
   return (
     <>
       {items.map((item: any, i: number) => {
-        return <Item id={i} key={i} removeItem={removeItem} type={item.type} addItem={addItem} />
+        const isFocused = note.focus === i;
+        return <Item id={i} key={i} removeItem={removeItem} type={item.type} addItem={addItem} focus={isFocused} />
       })}
       <AddItem addItem={addItem} />
     </>
