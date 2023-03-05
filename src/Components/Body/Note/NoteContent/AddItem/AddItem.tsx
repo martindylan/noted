@@ -1,9 +1,9 @@
 import { FunctionComponent, useState } from 'react'
-import ItemTypeMenu from '../ItemTypeMenu/ItemTypeMenu';
+import ItemTypeMenu from '../../../../UI/ItemTypeMenu/ItemTypeMenu';
 import styles from './AddItem.module.css'
 
 interface IAddItemProps {
-  addItem: (type: string) => void;
+  addItem: (type: string | null, pos: number | null) => void;
 }
 
 const AddItem: FunctionComponent<IAddItemProps> = (props) => {
@@ -14,8 +14,8 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
     setActive(true);
   }
 
-  const getItemType = (type: string | null) => {
-    if (type) props.addItem(type);
+  const getItemType = (type: string | null, pos: number | null) => {
+    if (type) props.addItem(type, null);
     setActive(false);
   }
 
@@ -30,11 +30,11 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
       setActive(false);
     }
   }
-  console.log("additem render")
+
   return (
     <div onBlur={focusOut} onKeyDown={keyDown} className={styles.this}>
       <button className={styles.add} onClick={activate}>+</button>
-      {active && <ItemTypeMenu sendTypeToParent={getItemType} />}
+      {active && <ItemTypeMenu sendTypeToParent={getItemType} id={null} />}
     </div>
   )
 }
