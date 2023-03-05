@@ -25,16 +25,22 @@ export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ childr
 const defaultData = {
   lang: 'EN',
   currentNote: 0,
-  currentItem: 0,
   notes:
     [
       {
-        title: `I'm your first note`,
+        title: `I'm your first note...`,
+        focus: 1,
         items:
         [
           {
-            content: `And I'm an item.\nYou can change my type, edit, move or delete me.`,
-            type: 'text'
+            content: `...and we're items!`,
+            type: 'text',
+            checked: false
+          },
+          {
+            content: `We can be changed, edited, moved or deleted.`,
+            type: 'text',
+            checked: false
           }
         ]
       }
