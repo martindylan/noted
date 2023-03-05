@@ -11,7 +11,7 @@ export default function Nav() {
   const addNote = () => {
     const newNotes = [...notes];
     const newTitle = prompt('Give your note a fancy title:');
-    newNotes.push({ title: newTitle, items: [{ content: '', type: 'text' }] });
+    newNotes.push({ title: newTitle, focus: 0, items: [{ content: '', type: 'text', }] });
     const newCurrent = newNotes.length - 1;
     setGlobal({ ...global, notes: newNotes, currentNote: newCurrent });
   }
