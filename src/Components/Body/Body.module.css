@@ -1,14 +1,5 @@
 .this {
   display: flex;
   flex-grow: 1;
-}
-
-.nav {
-  display: flex;
-  flex-grow: 0;
-}
-
-.noteParent {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
