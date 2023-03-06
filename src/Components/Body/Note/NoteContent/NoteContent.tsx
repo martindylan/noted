@@ -1,17 +1,17 @@
 import { useNote } from '../NoteContext';
 import styles from './NoteContent.module.css';
-import scrollable from '../../../../Resources/CSS/scrollable.module.css';
 // Components
 import Item from './Item/Item';
 import AddItem from './AddItem/AddItem';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function NoteContent() {
   const { note, setNote } = useNote();
   const [items, setItems] = useState(note.items);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   // Add item
-  const addItem = (type: string | null, pos: number | null) => {
+  const addItem = (type: string, pos: number | null) => {
     let newItems = [...note.items];
     let i = pos ? pos : newItems.length;
     newItems.splice(i, 0, { content: '', type: type, done: false });
@@ -27,13 +27,19 @@ export default function NoteContent() {
     setItems(newItems);
   }
 
+  // Scroll to bottom of note content
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView();
+  }
+
   return (
-    <div className={`${styles.this} ${scrollable.scrollable}`}>
+    <div className={styles.this}>
       {items.map((item: any, i: number) => {
         const isFocused = note.focus === i;
-        return <Item id={i} key={i} removeItem={removeItem} type={item.type} addItem={addItem} focus={isFocused} />
+        return <Item key={i} id={i} type={item.type} focus={isFocused} removeItem={removeItem} addItem={addItem} scrollToBottom={scrollToBottom} />
       })}
       <AddItem addItem={addItem} />
+      <div ref={bottomRef}></div>
     </div>
   )
 }
