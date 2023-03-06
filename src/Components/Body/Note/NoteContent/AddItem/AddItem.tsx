@@ -1,6 +1,7 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, useState } from 'react';
 import ItemTypeMenu from '../../../../UI/ItemTypeMenu/ItemTypeMenu';
-import styles from './AddItem.module.css'
+import styles from './AddItem.module.css';
+import button from '../../../../../Resources/CSS/button.module.css';
 
 interface IAddItemProps {
   addItem: (type: string | null, pos: number | null) => void;
@@ -33,7 +34,7 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
 
   return (
     <div onBlur={focusOut} onKeyDown={keyDown} className={styles.this}>
-      <button className={styles.add} onClick={activate}>+</button>
+      <button className={button.button} onClick={activate}>+</button>
       {active && <ItemTypeMenu sendTypeToParent={getItemType} id={null} />}
     </div>
   )
