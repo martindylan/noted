@@ -1,0 +1,23 @@
+.scrollable {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+  height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg) var(--hl);
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: none;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--hl);
+  border-radius: 20px;
+  border: 3px solid var(--bg);
+}

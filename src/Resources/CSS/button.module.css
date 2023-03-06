@@ -1,0 +1,24 @@
+.button {
+  width: 1.5em;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 0.2rem;
+  font-weight: bold;
+  background: var(--bg);
+  color: var(--mg);
+  text-align: center;
+  user-select: none;
+  transition-duration: 100ms;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: var(--hl);
+  color: var(--fg);
+}
+.button:focus {
+  outline: none;
+  background: var(--hl);
+  color: var(--fg);
+}
