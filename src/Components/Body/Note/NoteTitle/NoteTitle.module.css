@@ -1,7 +1,10 @@
 .this {
-  margin-bottom: 1em;
-  display: flex;
+  margin-bottom: 0.5em;
   align-items: flex-start;
+  flex-grow: 0;
+  flex-basis: content;
+  min-height: 2em;
+  max-height: 7em;
 }
 
 .text {
