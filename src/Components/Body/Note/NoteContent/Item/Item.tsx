@@ -6,35 +6,43 @@ import Tools from './Tools/Tools';
 
 interface IItemProps {
   id: number;
-  removeItem: (id: number) => void;
   type: string;
-  addItem: (type: string | null, pos: number | null) => void;
   focus: boolean;
+  addItem: (type: string, pos: number | null) => void;
+  removeItem: (id: number) => void;
+  scrollToBottom: () => void;
 }
 
 const Item: FunctionComponent<IItemProps> = (props) => {
   const [toolVisibility, setToolVisibility] = useState('hidden');
   const { note, setNote } = useNote();
-  const { id, type } = props;
+  const { id, type, focus } = props;
   const { checked } = note.items[id];
 
   const mainRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
-  // Show and hide item tool
-  const showTool = (e: any) => {
+  // Show and hide item's tools
+  const showTools = (e: any) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setToolVisibility('visible');
     }
   }
-  const hideTool = (e: any) => {
+  const hideTools = (e: any) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setToolVisibility('hidden');
     }
   }
 
-  // Set width and height of textarea
+  // Change item's type
+  const changeType = (newType: string) => {
+    let newItems = [...note.items];
+    newItems[id].type = newType;
+    setNote({...note, items: newItems});
+  }
+
+  // Set width and height of textarea element
   const resize = () => {
     const input = inputRef.current;
     if (input) {
@@ -44,43 +52,41 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     };
   }
 
-  // Toggle checkbox in items object
+  // Update item's checked property in items array
   const toggle = () => {
     let newItems = [...note.items];
     newItems[id].checked = !checked;
-    setNote({ ...note, items: newItems })
+    setNote({ ...note, items: newItems });
   }
 
-  // Focus item and set caret to end of content
-  const focusEnd = (element: any) => {
-    // Set caret to end
-    // const sel = window.getSelection();
-    // sel?.setBaseAndExtent(parent, 1, parent.childNodes[0], 0);
-    const input = element;
-    var len = input.value.length;
+  // Set this item to be note's focused item
+  const setToCurrent = useCallback((e: any) => {
+    setNote((note: any) => ({ ...note, focus: id }));
+    // Since this item is now focused, also show item's tools
+    showTools(e);
+  }, [setNote, id]);
 
-    // Mostly for Web Browsers
-    if (input.setSelectionRange) {
-      input.focus();
-      input.setSelectionRange(len, len);
-    } else if (input.createTextRange) {
-      var t = input.createTextRange();
-      t.collapse(true);
-      t.moveEnd('character', len);
-      t.moveStart('character', len);
-      t.select();
+  // Update the elements according to their corresponding reference in the note's items array
+  const updateElements = () => {
+    const input = inputRef.current;
+    if (input && focus) {
+      input.focus();  // Focus element
+      if (id === note.items.length-1) { // If this is the last item
+        props.scrollToBottom(); // Scroll down to the bottom so that the + button is visible
+      }
+    }
+    const text = note.items[id].content;
+    // Set textarea value to corresponding reference in note's items
+    if (input) input.value = text;
+    resize();
+    // If this item is of type checkbox, set the checkbox to corresponding reference in note's items
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = checked;
     }
   }
 
-  // Set note focus to this item
-  // Show item tool
-  const setToCurrent = useCallback((e: any) => {
-    setNote((note: any) => ({ ...note, focus: id }));
-    showTool(e);
-  }, [setNote, id]);
-
-  // Updates the items object according to input's inner text
-  const updateItems = useCallback((e: any) => {
+  // Updates the items array according to the elements
+  const updateItemsArray = useCallback((e: any) => {
     let newItems = [...note.items];
     newItems[id].content = e.target.value;
     setNote({ ...note, items: newItems });
@@ -94,8 +100,16 @@ const Item: FunctionComponent<IItemProps> = (props) => {
       e.preventDefault();
       const newType = type === 'heading' ? 'text' : type;
       props.addItem(newType, id + 1);
-    } else if (e.key === 'Backspace' && input?.value === '' && id !== 0) {
-      props.removeItem(id);
+    }
+    else if (e.key === 'Backspace' && input?.value === '' && (id !== 0 || note.items.length > 1)) {
+      e.preventDefault();
+      if (note.items[id].type !== 'text') {
+        let newItems = [...note.items];
+        newItems[id].type = 'text';
+        setNote({ ...note, focus: id, items: newItems });
+      } else {
+        props.removeItem(id);
+      }
     }
   }, [props, id, type])
 
@@ -103,55 +117,35 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   useEffect(() => {
     // Add main's event listeners for hover and focus
     const main = mainRef.current;
-    main?.addEventListener('mouseenter', showTool);
+    main?.addEventListener('mouseenter', showTools);
     main?.addEventListener('focusin', setToCurrent);
-    main?.addEventListener('mouseleave', hideTool);
-    main?.addEventListener('focusout', hideTool);
-    // Focus item if it was previously focused for the given note
-    const input = inputRef.current;
-    if (input && props.focus) {
-      focusEnd(input);
-    }
-    // Set input's value according to the items object
-    const text = note.items[id].content;
-    if (input) {
-      input.value = text ? text : '';
-    }
-    resize();
-    if (checkboxRef.current) {
-      checkboxRef.current.checked = checked;
-    }
+    main?.addEventListener('mouseleave', hideTools);
+    main?.addEventListener('focusout', hideTools);
+    updateElements(); // Update elements
     return () => {
       // Remove main's event listeners for hover and focus
-      main?.removeEventListener('mouseenter', showTool);
-      main?.removeEventListener('focusin', showTool);
-      main?.removeEventListener('mouseleave', hideTool);
-      main?.removeEventListener('focusout', hideTool);
+      main?.removeEventListener('mouseenter', showTools);
+      main?.removeEventListener('focusin', showTools);
+      main?.removeEventListener('mouseleave', hideTools);
+      main?.removeEventListener('focusout', hideTools);
     }
   }, [])
 
   // Set input's event listener for input and keypressed
   useEffect(() => {
     const input = inputRef.current;
-    input?.addEventListener('input', updateItems);
+    input?.addEventListener('input', updateItemsArray);
     input?.addEventListener('keydown', keyDown);
     return () => {
-      input?.removeEventListener('input', updateItems);
+      input?.removeEventListener('input', updateItemsArray);
       input?.removeEventListener('keydown', keyDown);
     }
-  }, [updateItems, keyDown])
+  }, [updateItemsArray, keyDown])
 
-  // Set input's inner text when an item in the items array gets added or deleted
+  // updateElements when an item in the items array gets added, deleted or changes type
   useEffect(() => {
-    const input = inputRef.current;
-    if (input && props.focus) {
-      focusEnd(input);
-    }
-    const text = note.items[id].content;
-    if (input) {
-      input.value = text;
-    }
-  }, [note.items.length, props.focus])
+    updateElements();
+  }, [note.items.length, note.items[id].type])
 
   // Return JSX according to item type
   const makeItem = () => {
@@ -188,7 +182,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   return (
     <div ref={mainRef} className={styles.this}>
       {makeItem()}
-      <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem}></Tools>
+      <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType}></Tools>
     </div>
   )
 }
