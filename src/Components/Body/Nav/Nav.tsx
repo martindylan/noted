@@ -1,6 +1,7 @@
 import { useGlobal } from '../../../GlobalContext';
 import AddNote from './AddNote/AddNote';
 import styles from './Nav.module.css'
+import scrollable from '../../../Resources/CSS/scrollable.module.css';
 import NavNote from './NavNote/NavNote';
 
 export default function Nav() {
@@ -19,7 +20,7 @@ export default function Nav() {
   return (
     <div className={styles.this}>
 
-      <div className={styles.list}>
+      <div className={`${styles.list} ${scrollable.scrollable}`}>
         {notes.map((note: object, i: number) => {
           return <NavNote key={i} note={i}></NavNote>;
         })}
