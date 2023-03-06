@@ -1,4 +1,6 @@
 import { useNote } from '../NoteContext';
+import styles from './NoteContent.module.css';
+import scrollable from '../../../../Resources/CSS/scrollable.module.css';
 // Components
 import Item from './Item/Item';
 import AddItem from './AddItem/AddItem';
@@ -21,17 +23,17 @@ export default function NoteContent() {
   const removeItem = (id: number) => {
     let newItems = [...items];
     newItems.splice(id, 1);
-    setNote({ ...note, items: newItems, focus: id-1 });
+    setNote({ ...note, items: newItems, focus: id - 1 });
     setItems(newItems);
   }
 
   return (
-    <>
+    <div className={`${styles.this} ${scrollable.scrollable}`}>
       {items.map((item: any, i: number) => {
         const isFocused = note.focus === i;
         return <Item id={i} key={i} removeItem={removeItem} type={item.type} addItem={addItem} focus={isFocused} />
       })}
       <AddItem addItem={addItem} />
-    </>
+    </div>
   )
 }
