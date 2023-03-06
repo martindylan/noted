@@ -1,35 +1,10 @@
 .this {
-  margin-bottom: 0.5em;
-  align-items: flex-start;
-  flex-grow: 0;
-  flex-basis: content;
-  min-height: 2em;
-  max-height: 7em;
+  align-items: center;
+  display: flex;
 }
 
-.text {
+.input {
   font-size: 2em;
   font-weight: bold;
-  text-decoration: underline;
-  border-radius: 0.2rem;
-  padding: 0.5rem;
-  min-width: 3ch;
   max-width: 36ch;
-  word-break: break-word;
-  transition-duration: 100ms;
-}
-
-.text:hover {
-  background: var(--hhl);
-}
-
-.text:focus {
-  outline: none;
-  background: var(--hl);
-}
-
-.text:empty::before {
-  content: '...';
-  display: inline-block;
-  color: var(--mg)
 }
