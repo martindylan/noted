@@ -1,0 +1,22 @@
+.inputTextBox {
+  min-width: 3ch;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  background: none;
+  color: var(--fg);
+  word-break: break-word;
+  transition-property: background-color;
+  transition-duration: 100ms;
+  resize: none;
+  overflow:hidden;
+}
+
+.inputTextBox:hover {
+  background: var(--hhl);
+}
+.inputTextBox:focus {
+  outline: none;
+  background: var(--hl);
+}
