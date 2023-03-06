@@ -8,36 +8,17 @@
 
 .this {
   display: flex;
+  position: relative;
   margin-left: 0.5em;
 }
 
 .this button {
-  background: none;
-  border: none;
-  margin: 0;
-  height: 1.5em;
-  aspect-ratio: 1 / 1;
   margin-right: 0.1em;
   padding: 0.2em;
-  border-radius: 0.3em;
-  display: flex;
-  align-items: center;
-  transition-duration: 200ms;
-}
-
-.this button:hover {
-  background: var(--hl);
-}
-
-.this button:focus {
-  outline: none;
-  background: var(--hl);
 }
 
 .this img {
-  width: 1.2em;
-  user-select: none;
-  transition-duration: 90ms;
+  transition-duration: 100ms;
 }
 .visible img {
   opacity: 1;
@@ -66,4 +47,8 @@
 
 .draggable:active {
   cursor: grabbing;
+}
+
+.changeType {
+  display: flex;
 }
