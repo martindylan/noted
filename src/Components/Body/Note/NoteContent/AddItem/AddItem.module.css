@@ -2,28 +2,3 @@
   display: flex;
   margin-top: 0.3em;
 }
-
-.add {
-  user-select: none;
-  font-weight: bold;
-  flex-grow: 0;
-  height: 1.5em;
-  background: var(--bg);
-  border: none;
-  border-radius: 0.2rem;
-  color: var(--mg);
-  aspect-ratio: 1 / 1;
-  text-align: center;
-  transition-duration: 100ms;
-}
-
-.add:hover {
-  cursor: pointer;
-  background: var(--hl);
-  color: var(--fg);
-}
-.add:focus {
-  outline: none;
-  background: var(--hl);
-  color: var(--fg);
-}
