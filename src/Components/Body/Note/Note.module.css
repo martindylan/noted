@@ -5,10 +5,11 @@
 }
 .this {
   margin-top: 1em;
+  min-height: 2em;
+  max-width: 96ch;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-width: 87ch;
 }
 
 .this input {
