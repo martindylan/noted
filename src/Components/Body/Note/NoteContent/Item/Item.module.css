@@ -3,13 +3,15 @@
   align-items: center;
   margin-bottom: 0.2em;
 }
+.this:has(textarea[class*='heading']) {
+  margin-top: 1.5em;
+}
 
 .input {
   background: none;
   outline: none;
   border: none;
   color: var(--fg);
-  /* display: block; */
   border-radius: 0.2rem;
   padding: 0.25rem 0.5rem;
   min-width: 3ch;
