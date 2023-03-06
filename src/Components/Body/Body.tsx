@@ -12,7 +12,8 @@ export default function Body() {
   return (
     <div className={styles.this}>
       <Nav></Nav>
-      <Note key={currentNote} note={currentNote}></Note>
+      {global.notes[currentNote] && <Note key={currentNote} note={currentNote}></Note>}
+      {!global.notes[currentNote] && <h2>{'<'}- add some notes!</h2>}
     </div>
   )
 }

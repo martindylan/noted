@@ -1,5 +1,6 @@
 .this {
   display: flex;
+  align-items: center;
   margin-bottom: 0.25em;
 }
 
@@ -9,7 +10,6 @@
   border-radius: 100%;
   background: none;
   flex-shrink: 0;
-  margin-top: 0.65em;
   width: 0;
   transition-duration: 200ms;
 }
@@ -19,7 +19,7 @@
 }
 
 .title {
-  margin-left: 0.3em;
+  margin: 0 0.3em;
   padding: 0.3em 0.3em;
   border-radius: 0.2rem;
   word-break: break-word;
@@ -37,14 +37,13 @@
   color: var(--mg)
 }
 
-.this img {
-  margin-left: 0.5em;
-  width: 1em;
-}
-
 .title.currenttrue {
   background: var(--hl);
 }
 .title.currenttrue:hover {
   background: var(--hl);
+}
+
+.this button img {
+  opacity: 1;
 }
