@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useRef, useCallback } from 'react'
 import { useNote } from '../NoteContext';
-import styles from './NoteTitle.module.css'
+import styles from './NoteTitle.module.css';
+import scrollable from '../../../../Resources/CSS/scrollable.module.css';
 
 const NoteTitle: FunctionComponent = () => {
 
@@ -34,7 +35,7 @@ const NoteTitle: FunctionComponent = () => {
   }, [updateItems])
 
   return (
-    <div className={styles.this}>
+    <div className={`${styles.this} ${scrollable.scrollable}`}>
       <span ref={inputRef} className={styles.text} contentEditable></span>
     </div>
   )
