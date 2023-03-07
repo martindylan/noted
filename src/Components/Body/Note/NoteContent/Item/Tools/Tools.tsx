@@ -20,8 +20,7 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
   const id = props.id;
 
   const remove = () => {
-    const confirmation = window.confirm('Are you sure you want to delete this item?');
-    if (confirmation) props.removeItem(id);
+    props.removeItem(id);
   }
 
   const getType = (type: string) => {
@@ -39,9 +38,9 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
       <button className={`${styles.clickable} ${button.button}`} onClick={remove}><img className={styles.first} draggable="false" src={trashcanImg} alt="delete"></img></button>
       <div className={styles.changeType} onBlur={focusOut}>
         <button className={`${styles.clickable} ${button.button}`} onClick={(e) => setDisplayChange(true)}><img className={styles.second} draggable="false" src={changeImg} alt="change"></img></button>
-        <ItemTypeMenu visibility={displayChange} sendTypeToParent={getType} id={id} />
+        <ItemTypeMenu visibility={displayChange} sendTypeToParent={getType} id={id} fromTools={true} />
       </div>
-      <button className={`${styles.draggable} ${button.button}`} onClick={(e) => console.log("move item")}><img className={styles.last} draggable="false" src={moveImg} alt="move"></img></button>
+      {/* <button className={`${styles.draggable} ${button.button}`} onClick={(e) => console.log("move item")}><img className={styles.last} draggable="false" src={moveImg} alt="move"></img></button> */}
     </div>
   )
 }

@@ -13,6 +13,7 @@
   width: 0;
   transition-duration: 200ms;
 }
+
 .bullet.currenttrue {
   width: 0.5em;
   background: var(--fg);
@@ -40,10 +41,20 @@
 .title.currenttrue {
   background: var(--hl);
 }
+
 .title.currenttrue:hover {
   background: var(--hl);
 }
 
 .this button img {
   opacity: 1;
+}
+
+.editButton {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .editButton {
+    display: none;
+  }
 }

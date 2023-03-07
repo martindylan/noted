@@ -11,15 +11,28 @@
 .this {
   position: absolute;
   z-index: 1;
-  margin-left: 2em;
   border-radius: 0.3em;
   padding: 0.2em;
   background: var(--hhl);
+  margin-left: 2em;
   transition: 100ms;
   display: flex;
   flex-direction: column;
-  transform: translateY(calc(-100% + 1.55em));
-  box-shadow: 0 0 1em 0.2em #000;
+  box-shadow: 0 0 1em 0.2em var(--shadow);
+}
+.fromToolsUp {
+  margin-left: calc(-100% - 1.3em);
+  transform: translateY(calc(-100% - 0.5em));
+}
+.fromToolsDown {
+  margin-left: calc(-100% - 1.3em);
+  transform: translateY(calc(2em));
+}
+@media (min-width: 768px) {
+  .this {
+    margin-left: 2em;
+    transform: translateY(calc(-100% + 1.55em));
+  }
 }
 
 .this button {

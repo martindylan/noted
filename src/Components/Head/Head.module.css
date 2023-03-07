@@ -10,13 +10,37 @@
 .title {
   display: inline-block;
   margin: 0;
-  padding: 0.5ch;
+  padding: 0.3em;
   font-size: 3em;
 }
 
 .subtitle {
   font-size: 1.2em;
   margin-left: 1ch;
+  display: none;
+  flex-grow: 1;
+}
+
+.dropdown {
+  flex-grow: 1;
+  margin-right: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    display: block;
+  }
+
+  .dropdown {
+    display: none;
+  }
+}
+
+.dropdown img {
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .bold {

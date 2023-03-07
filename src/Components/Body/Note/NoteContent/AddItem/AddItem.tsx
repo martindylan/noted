@@ -36,7 +36,7 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
   return (
     <div onBlur={focusOut} onKeyDown={keyDown} className={styles.this}>
       <button className={button.button} onClick={activate}><img src={addImg} alt='+'></img></button>
-      <ItemTypeMenu sendTypeToParent={getItemType} visibility={active} id={null} />
+      <ItemTypeMenu sendTypeToParent={getItemType} visibility={active} id={null} fromTools={false} />
     </div>
   )
 }

@@ -2,44 +2,67 @@
   background: var(--hhl);
   flex-direction: column;
   border-right: 1px solid var(--hl);
-  display: none;
   user-select: none;
-  min-width: 30ch;
-  max-width: 30ch;
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 0;
+  opacity: 0;
+  transition: 100ms;
+  z-index: 0;
+}
+
+.dropped {
+  z-index: 1;
+  height: calc(100% - 5.5em);
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
   .this {
-    display: flex;
+    width: 30ch;
+    position: static;
     flex-grow: 0;
+    opacity: 1;
+    height: auto;
+  }
+
+  .dropped {
+    height: auto;
   }
 }
 
 .list {
-  padding: 0.5em 0.5em;
+  padding: 1em 0.5em 0.5em;
   background: var(--bg);
   border-bottom: 1px solid var(--hl);
-}
-
-.text {
-  flex-grow: 0;
-  background: none;
-  border: none;
-  color: var(--fg);
-  margin: 0 0.3em 0.3em;
 }
 
 .bottom {
   margin: 0.6em 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.3em;
+}
+@media (min-width: 768px) {
+  .bottom {
+    flex-direction: column;
+  }
 }
 
 .link {
-  text-decoration: underline;
+  font-size: 1.1em;
+  font-family: inherit;
+  font-weight: bold;
+  flex-grow: 0;
+  background: none;
+  border: none;
+  color: var(--fg);
+  margin: 0 0.3em;
 }
 
 .link:hover {
   cursor: pointer;
+  text-decoration: underline;
 }

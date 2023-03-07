@@ -10,6 +10,7 @@ interface IItemTypeMenu {
   sendTypeToParent: (type: string, pos: number | null) => void;
   id: number | null;
   visibility: boolean;
+  fromTools: boolean;
 }
 
 const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
@@ -28,8 +29,15 @@ const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
   const isBulleted = id !== null && type === 'bulleted';
   const isCheckbox = id !== null && type === 'checkbox';
 
+  let fromToolsStyle;
+  if (props.fromTools && id !== null) {
+    fromToolsStyle = id > 1 ? styles.fromToolsUp : styles.fromToolsDown;
+  } else {
+    fromToolsStyle = '';
+  }
+
   return (
-    <div className={styles.this} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}>
+    <div className={`${styles.this} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}>
       <div className={styles.row}>
         <button className={isText ? styles.disabled : styles.enabled} disabled={isText} onClick={() => sendType('text', id ? id : null)}>
           <img src={text} alt='text' draggable="false" />

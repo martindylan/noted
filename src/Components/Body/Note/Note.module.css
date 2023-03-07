@@ -1,12 +1,13 @@
 @media (min-width: 768px) {
   .this {
-    margin: 2em 1em;
+    margin-top: 2em;
   }
 }
 .this {
   margin-top: 1em;
   min-height: 2em;
-  max-width: 96ch;
+  width: 96ch;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

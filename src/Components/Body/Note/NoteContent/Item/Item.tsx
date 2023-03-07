@@ -1,4 +1,5 @@
 import { useState, FunctionComponent, useEffect, useRef, useCallback } from 'react';
+import { useGlobal } from '../../../../../GlobalContext';
 import { useNote } from '../../NoteContext';
 import styles from './Item.module.css';
 // Components
@@ -18,6 +19,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   const { note, setNote } = useNote();
   const { id, type, focus } = props;
   const { checked } = note.items[id];
+  const { global } = useGlobal()
 
   const mainRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -39,7 +41,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   const changeType = (newType: string) => {
     let newItems = [...note.items];
     newItems[id].type = newType;
-    setNote({...note, items: newItems});
+    setNote({ ...note, items: newItems });
   }
 
   // Set width and height of textarea element
@@ -69,9 +71,9 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   // Update the elements according to their corresponding reference in the note's items array
   const updateElements = () => {
     const input = inputRef.current;
-    if (input && focus) {
+    if (input && focus && !global.dropDown) {
       input.focus();  // Focus element
-      if (id === note.items.length-1) { // If this is the last item
+      if (id === note.items.length - 1) { // If this is the last item
         props.scrollToBottom(); // Scroll down to the bottom so that the + button is visible
       }
     }
@@ -161,7 +163,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
       case 'bulleted':
         return (
           <>
-            <div className={styles.bulleted}></div>
+            <div className={styles.bulleted}><div className={styles.bullet}></div></div>
             <textarea rows={1} ref={inputRef} className={styles.input} placeholder='...'></textarea>
           </>
         );

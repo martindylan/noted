@@ -14,12 +14,11 @@ export default function Nav() {
     const newTitle = prompt('Give your note a fancy title:');
     newNotes.push({ title: newTitle, focus: 0, items: [{ content: '', type: 'text', }] });
     const newCurrent = newNotes.length - 1;
-    setGlobal({ ...global, notes: newNotes, currentNote: newCurrent });
+    setGlobal({ ...global, notes: newNotes, currentNote: newCurrent, dropDown: false });
   }
 
   return (
-    <div className={styles.this}>
-
+    <div className={`${styles.this} ${global.dropDown ? styles.dropped : ''}`}>
       <div className={`${styles.list} ${scrollable.scrollable}`}>
         {notes.map((note: object, i: number) => {
           return <NavNote key={i} note={i}></NavNote>;
@@ -28,8 +27,8 @@ export default function Nav() {
       </div>
       <div className={styles.bottom}>
         {/* <span className={styles.text}>Coming to Android soon!</span> */}
-        <button className={`${styles.text} ${styles.link}`}>Settings</button>
-        <button className={`${styles.text} ${styles.link}`}>About</button>
+        <button className={styles.link}>Settings</button>
+        <button className={styles.link}>About</button>
       </div>
     </div>
   )

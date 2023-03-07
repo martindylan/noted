@@ -12,7 +12,7 @@ interface IGlobalProviderProps {
 export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ children }) => {
   const storedData = window.localStorage.getItem('data');
   // If there's no data saved to localStorage, use the default data.
-  const [global, setGlobal] = useState(storedData ? JSON.parse(storedData) : defaultData);
+  const [global, setGlobal] = useState(storedData ? {...JSON.parse(storedData), dropDown: false} : defaultData);
   localStorage.setItem('data', JSON.stringify(global));
 
   return (
@@ -26,6 +26,7 @@ export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ childr
 const defaultData = {
   theme: 'dark',  // UI theme (dark/light)
   currentNote: 0, // Index of the note that's being edited
+  dropDown: false,  // Tells if menu dropdown is active or not
   notes:
     [
       {
