@@ -17,7 +17,7 @@
   min-width: 3ch;
   max-width: 62ch;
   word-break: break-word;
-  transition-property: background-color;
+  transition-property: background-color, border;
   transition-duration: 100ms;
   resize: none;
   overflow:hidden;
@@ -64,4 +64,11 @@
 .checkbox input {
   display: block;
   margin: 0 auto;
+}
+
+.draggedOver {
+  border-bottom: 3px solid var(--fg);
+}
+.notDraggedOver {
+  border-bottom: 0 solid transparent;
 }

@@ -16,6 +16,7 @@ interface IItemProps {
 
 const Item: FunctionComponent<IItemProps> = (props) => {
   const [toolVisibility, setToolVisibility] = useState('hidden');
+  const [draggedOver, setDraggedOver] = useState(false);
   const { note, setNote } = useNote();
   const { id, type, focus } = props;
   const { checked } = note.items[id];
@@ -25,7 +26,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
-  // Show and hide item's tools
+  // Show/hide item's tools
   const showTools = (e: any) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setToolVisibility('visible');
@@ -95,7 +96,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     resize();
   }, [note, id, setNote]);
 
-  // Manage key presses
+  // Handle key presses
   const keyDown = useCallback((e: any) => {
     const input = inputRef.current;
     if (e.key === 'Enter') {
@@ -114,6 +115,32 @@ const Item: FunctionComponent<IItemProps> = (props) => {
       }
     }
   }, [props, id, type])
+
+  // Handle drags
+  const dragEnter = (e: any) => {
+    e.preventDefault();
+    setDraggedOver(true);
+  }
+  const dragLeave = (e: any) => {
+    e.preventDefault();
+    setDraggedOver(false);
+  }
+  const dragDrop = (e: any) => {
+    const data = e.dataTransfer.getData('text/plain');
+    if (data.slice(0, 7) !== 'itemId:') {
+      return;
+    }
+    e.preventDefault();
+    setDraggedOver(false);
+    const draggedId = parseInt(data.slice(7));
+    if (draggedId === id) return;
+    let newItems = [...note.items];
+    const droppedItem = { ...note.items[draggedId] };
+    newItems.splice(id + 1, 0, droppedItem);
+    newItems.splice(draggedId < id ? draggedId : draggedId + 1, 1);
+    const newFocus = draggedId < id ? id : id + 1;
+    setNote({ ...note, focus: newFocus, items: newItems });
+  }
 
   // When mounting the component:
   useEffect(() => {
@@ -147,36 +174,37 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   // updateElements when an item in the items array gets added, deleted or changes type
   useEffect(() => {
     updateElements();
-  }, [note.items.length, note.items[id].type])
+  }, [note.items])
 
   // Return JSX according to item type
   const makeItem = () => {
+    const dragEnterStyle = draggedOver ? styles.draggedOver : styles.notDraggedOver;
     switch (type) {
       case 'text':
         return (
-          <textarea rows={1} ref={inputRef} className={styles.input} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
       case 'heading':
         return (
-          <textarea rows={1} ref={inputRef} className={`${styles.input} ${styles.heading}`} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${styles.heading} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
       case 'bulleted':
         return (
           <>
             <div className={styles.bulleted}><div className={styles.bullet}></div></div>
-            <textarea rows={1} ref={inputRef} className={styles.input} placeholder='...'></textarea>
+            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
           </>
         );
       case 'checkbox':
         return (
           <>
             <div className={`${styles.checkbox} checked${checked}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>
-            <textarea rows={1} ref={inputRef} className={`${styles.input} checked${checked}`} placeholder='...'></textarea>
+            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
           </>
         );
       default:
         return (
-          <textarea ref={inputRef} className={styles.input} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
     }
   }

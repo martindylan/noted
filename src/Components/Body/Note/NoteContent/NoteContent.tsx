@@ -7,7 +7,6 @@ import { useRef, useState } from 'react';
 
 export default function NoteContent() {
   const { note, setNote } = useNote();
-  const [items, setItems] = useState(note.items);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // Add item
@@ -16,17 +15,15 @@ export default function NoteContent() {
     let i = pos ? pos : newItems.length;
     newItems.splice(i, 0, { content: '', type: type, done: false });
     setNote({ ...note, items: newItems, focus: i });
-    setItems(newItems);
   }
 
   // Remove item
   const removeItem = (id: number) => {
     const confirmation = window.confirm('Are you sure you want to delete this item?');
     if (!confirmation) return;
-    let newItems = [...items];
+    let newItems = [...note.items];
     newItems.splice(id, 1);
     setNote({ ...note, items: newItems, focus: id - 1 });
-    setItems(newItems);
   }
 
   // Scroll to bottom of note content
@@ -36,7 +33,7 @@ export default function NoteContent() {
 
   return (
     <div className={styles.this}>
-      {items.map((item: any, i: number) => {
+      {note.items.map((item: any, i: number) => {
         const isFocused = note.focus === i;
         return <Item key={i} id={i} type={item.type} focus={isFocused} removeItem={removeItem} addItem={addItem} scrollToBottom={scrollToBottom} />
       })}

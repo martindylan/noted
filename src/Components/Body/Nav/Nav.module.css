@@ -9,11 +9,10 @@
   height: 0;
   opacity: 0;
   transition: 100ms;
-  z-index: 0;
+  z-index: 1;
 }
 
 .dropped {
-  z-index: 1;
   height: calc(100% - 5.5em);
   opacity: 1;
 }
@@ -65,4 +64,56 @@
 .link:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+.link:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.greyedout {
+  position: fixed;
+  z-index: 2;
+  width: 200vw;
+  height: 200vh;
+  transform: translateY(-50vh);
+  background: #0008;
+}
+
+.popup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: var(--bg);
+  border: 1px solid var(--hl);
+  border-radius: 1rem;
+}
+
+.bar {
+  padding: 1em;
+  background: var(--hhl);
+  border-bottom: 1px solid var(--hl);
+  border-radius: 1rem 1rem 0 0;
+}
+
+.bar h2 {
+  display: inline;
+}
+
+.content {
+  padding: 1em;
+}
+
+.content a {
+  color: var(--fg);
+}
+.content a:visited {
+
+}
+
+.bottom {
+  text-align: right;
 }

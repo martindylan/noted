@@ -7,6 +7,7 @@ import { useGlobal } from '../../GlobalContext';
 export default function Head() {
 
   const { global, setGlobal } = useGlobal();
+
   const dropDown = () => {
     setGlobal({ ...global, dropDown: !global.dropDown });
   }

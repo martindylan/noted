@@ -5,7 +5,6 @@ import Nav from './Nav/Nav';
 import Note from './Note/Note';
 
 export default function Body() {
-
   const { global } = useGlobal();
   const currentNote = global.currentNote;
 

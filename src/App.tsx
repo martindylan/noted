@@ -7,7 +7,6 @@ import { GlobalProvider } from './GlobalContext';
 
 function App() {
   const [height, setHeight] = useState(window.innerHeight);
-  
   const updateHeight = (e: any) => {
     setHeight(e.target.innerHeight);
   }

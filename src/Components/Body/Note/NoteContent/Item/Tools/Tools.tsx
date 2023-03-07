@@ -33,6 +33,10 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
     }
   }
 
+  const drag = (e: any) => {
+    e.dataTransfer.setData('text/plain', 'itemId:'+id);
+  }
+
   return (
     <div className={`${styles.this} ${styles[props.visibility]}`}>
       <button className={`${styles.clickable} ${button.button}`} onClick={remove}><img className={styles.first} draggable="false" src={trashcanImg} alt="delete"></img></button>
@@ -40,7 +44,7 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
         <button className={`${styles.clickable} ${button.button}`} onClick={(e) => setDisplayChange(true)}><img className={styles.second} draggable="false" src={changeImg} alt="change"></img></button>
         <ItemTypeMenu visibility={displayChange} sendTypeToParent={getType} id={id} fromTools={true} />
       </div>
-      {/* <button className={`${styles.draggable} ${button.button}`} onClick={(e) => console.log("move item")}><img className={styles.last} draggable="false" src={moveImg} alt="move"></img></button> */}
+      <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button}`}><img className={styles.last} draggable="false" src={moveImg} alt="move"></img></button>
     </div>
   )
 }

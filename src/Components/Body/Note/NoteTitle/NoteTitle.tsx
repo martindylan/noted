@@ -8,6 +8,8 @@ const NoteTitle: FunctionComponent = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { note, setNote } = useNote();
   const title = note.title;
+
+  document.title = title;
   
   // When mounting the component:
   // Set input's inner text according to the title object

@@ -14,7 +14,7 @@ const NavNote: FunctionComponent<INavNoteProps> = (props) => {
   const { global, setGlobal } = useGlobal();
   const [isCurrent, setIsCurrent] = useState(false);
   const notes = global.notes;
-  
+
   const currentNote = global.currentNote;
   const { note } = props;
   const inputRef = useRef<HTMLSpanElement>(null);
@@ -40,10 +40,16 @@ const NavNote: FunctionComponent<INavNoteProps> = (props) => {
     setGlobal({ ...global, currentNote: note, dropDown: false });
   }
 
+  const keyDown = (e: any) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    selectNote();
+  }
+
   return (
     <div className={styles.this}>
       <div className={`${styles.bullet} ${styles['current' + isCurrent]}`}></div>
-      <span ref={inputRef} className={`${styles.title} ${styles['current' + isCurrent]}`} onClick={selectNote}>{notes[note].title}</span>
+      <span tabIndex={0} ref={inputRef} className={`${styles.title} ${styles['current' + isCurrent]}`} onClick={selectNote} onKeyDown={keyDown}>{notes[note].title}</span>
       {currentNote === note &&
         <>
           <button className={button.button} onClick={removeNote}><img src={trashcanImg} alt='delete'></img></button>
