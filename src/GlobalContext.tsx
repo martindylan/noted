@@ -24,7 +24,6 @@ export const GlobalProvider: FunctionComponent<IGlobalProviderProps> = ({ childr
 
 // This is the structure of the data used by the app, with defaults in case the app wasn't used yet.
 const defaultData = {
-  theme: 'dark',  // UI theme (dark/light)
   currentNote: 0, // Index of the note that's being edited
   dropDown: false,  // Tells if menu dropdown is active or not
   notes:

@@ -1,0 +1,58 @@
+.this {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  width: max-content;
+  max-width: 90vw;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  border: 1px solid var(--hl);
+  border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  .this {
+    width: fit-content;
+  }
+}
+
+.topBar {
+  padding: 1em;
+  background: var(--hhl);
+  border-bottom: 1px solid var(--hl);
+  border-radius: 1rem 1rem 0 0;
+}
+
+.topBar h2 {
+  display: inline;
+}
+
+.content {
+  padding: 1em;
+}
+
+.content a {
+  color: var(--fg);
+  font-weight: bold;
+}
+
+.this select {
+  background: var(--hl);
+  color: var(--fg);
+  padding: 0.2em 0.4em;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.this select:focus {
+  outline: 1px solid var(--fg);
+}
+
+.this hr {
+  border: none;
+  border-top: 1px solid var(--hl);
+  margin: 1em 0;
+}

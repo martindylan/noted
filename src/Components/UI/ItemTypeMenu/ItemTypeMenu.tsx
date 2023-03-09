@@ -33,7 +33,7 @@ const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
   if (props.fromTools && id !== null) {
     fromToolsStyle = id > 1 ? styles.fromToolsUp : styles.fromToolsDown;
   } else {
-    fromToolsStyle = '';
+    fromToolsStyle = styles.notFromTools;
   }
 
   return (

@@ -19,7 +19,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   const [draggedOver, setDraggedOver] = useState(false);
   const { note, setNote } = useNote();
   const { id, type, focus } = props;
-  const { checked } = note.items[id];
+  const { checked } = note.items[id] ? note.items[id] : false;
   const { global } = useGlobal()
 
   const mainRef = useRef<HTMLDivElement>(null);
@@ -71,6 +71,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
 
   // Update the elements according to their corresponding reference in the note's items array
   const updateElements = () => {
+    if (id < 0) return;
     const input = inputRef.current;
     if (input && focus && !global.dropDown) {
       input.focus();  // Focus element
@@ -202,6 +203,10 @@ const Item: FunctionComponent<IItemProps> = (props) => {
             <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
           </>
         );
+      case 'none':
+        return (
+          <div onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} className={`${styles.input} ${styles.none} ${dragEnterStyle}`}></div>
+        )
       default:
         return (
           <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
@@ -212,8 +217,12 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   return (
     <div ref={mainRef} className={styles.this}>
       {makeItem()}
-      <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType}></Tools>
-    </div>
+      {type !== 'none' &&
+        <>
+          <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType}></Tools>
+        </>
+      }
+    </div >
   )
 }
 

@@ -1,0 +1,15 @@
+.centeredButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.loadFile {
+  height: auto;
+}
+
+.loadFile input[type="file"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}

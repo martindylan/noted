@@ -42,7 +42,7 @@
 }
 
 .draggable:hover {
-  cursor: grab;
+  cursor: move;
 }
 
 .draggable:active {
