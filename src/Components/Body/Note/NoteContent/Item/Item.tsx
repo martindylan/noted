@@ -75,7 +75,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     const input = inputRef.current;
     if (input && focus && !global.dropDown) {
       input.focus();  // Focus element
-      if (id === note.items.length - 1) { // If this is the last item
+      if (id === note.items.length - 1 && screen.width>=768) { // If this is the last item
         props.scrollToBottom(); // Scroll down to the bottom so that the + button is visible
       }
     }
