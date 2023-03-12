@@ -7,19 +7,40 @@
   border: none;
   border-radius: 0.2rem;
   background: none;
-  color: colors.$fg;
   word-break: break-word;
   transition-property: background-color;
   transition-duration: 100ms;
   resize: none;
   overflow: hidden;
 
+  &.dark {
+    color: colors.$fg-dark;
+  }
+
+  &.light {
+    color: colors.$fg-light;
+  }
+
   &:hover {
-    background: colors.$hhl;
+    &.dark {
+      background: colors.$hhl-dark;
+    }
+
+    &.light {
+      background: colors.$hhl-light;
+    }
+
   }
 
   &:focus {
     outline: none;
-    background: colors.$hl;
+
+    &.dark {
+      background: colors.$hl-dark;
+    }
+
+    &.light {
+      background: colors.$hl-light;
+    }
   }
 }

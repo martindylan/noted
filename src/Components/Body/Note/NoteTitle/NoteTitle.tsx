@@ -2,15 +2,17 @@ import { FunctionComponent, useEffect, useRef, useCallback } from 'react'
 import { useNote } from '../NoteContext';
 import styles from './NoteTitle.module.scss';
 import inputTextBox from '../../../../Resources/SASS/inputTextBox.module.scss';
+import { useGlobal } from '../../../../GlobalContext';
 
 const NoteTitle: FunctionComponent = () => {
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { note, setNote } = useNote();
+  const { global } = useGlobal();
   const title = note.title;
 
   document.title = title;
-  
+
   // When mounting the component:
   // Set input's inner text according to the title object
   useEffect(() => {
@@ -49,8 +51,8 @@ const NoteTitle: FunctionComponent = () => {
   }, [updateItems])
 
   return (
-    <div className={`${styles.NoteTitle}`}>
-      <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox}`} placeholder='...'></textarea>
+    <div className={styles.NoteTitle}>
+      <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]}`} placeholder='...'></textarea>
     </div>
   )
 }

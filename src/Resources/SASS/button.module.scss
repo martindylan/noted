@@ -8,18 +8,25 @@
   border: none;
   border-radius: 0.2rem;
   font-weight: bold;
-  background: colors.$bg;
-  color: colors.$mg;
   align-items: center;
   justify-content: center;
   text-align: center;
   user-select: none;
   transition-duration: 100ms;
+  background: none;
 
   &:hover {
     cursor: pointer;
-    background: colors.$hl;
-    color: colors.$fg;
+
+    &.dark {
+      background: colors.$hl-dark;
+      color: colors.$fg-dark;
+    }
+
+    &.light {
+      background: colors.$hl-light;
+      color: colors.$fg-light;
+    }
 
     img {
       opacity: 1;
@@ -28,8 +35,20 @@
 
   &:focus {
     outline: none;
-    background: colors.$hl;
-    color: colors.$fg;
+
+    &.dark {
+      background: colors.$hl-dark;
+      color: colors.$fg-dark;
+    }
+
+    &.light {
+      background: colors.$hl-light;
+      color: colors.$fg-light;
+    }
+
+    img {
+      opacity: 1;
+    }
   }
 
   img {
@@ -37,5 +56,13 @@
     opacity: 0.5;
     user-select: none;
     transition-duration: 100ms;
+
+    &.dark {
+      filter: invert(0%);
+    }
+
+    &.light {
+      filter: invert(100%);
+    }
   }
 }

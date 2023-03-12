@@ -43,13 +43,13 @@ const NavNote: FunctionComponent<INavNoteProps> = (props) => {
   }
 
   return (
-    <div className={styles.NavNote}>
+    <div className={`${styles.NavNote} ${styles[global.theme]}`}>
       <div className={`${styles.bullet} ${styles['current' + isCurrent]}`}></div>
       <span tabIndex={0} ref={inputRef} className={`${styles.title} ${styles['current' + isCurrent]}`} onClick={selectNote} onKeyDown={keyDown}>{global.notes[note].title}</span>
       {currentNote === note &&
         <>
-          <button className={button.button} onClick={removeNote}><img src={trashcanImg} alt='delete'></img></button>
-          <button className={`${button.button} ${styles.editButton}`} onClick={editNote}><img src={editImg} alt='edit'></img></button>
+          <button className={`${button.button} ${button[global.theme]}`} onClick={removeNote}><img className={button[global.theme]} src={trashcanImg} alt='delete'></img></button>
+          <button className={`${button.button} ${button[global.theme]} ${styles.editButton}`} onClick={editNote}><img className={button[global.theme]} src={editImg} alt='edit'></img></button>
         </>
       }
     </div>

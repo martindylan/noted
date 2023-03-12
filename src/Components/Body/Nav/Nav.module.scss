@@ -2,9 +2,8 @@
 @use '../../../Resources/SASS/mixins' as *;
 
 .Nav {
-  background: colors.$hhl;
   flex-direction: column;
-  border-right: 1px solid colors.$hl;
+  border-right: 1px solid;
   user-select: none;
   display: flex;
   position: absolute;
@@ -13,6 +12,14 @@
   opacity: 0;
   transition: 100ms;
   z-index: 1;
+  &.dark {
+    background-color: colors.$bg-dark;
+    border-color: colors.$hl-dark;
+  }
+  &.light {
+    background-color: colors.$bg-light;
+    border-color: colors.$hl-light;
+  }
 
   @include tablet {
     width: 30ch;
@@ -34,16 +41,28 @@
 
 .list {
   padding: 1em 0.5em 0.5em;
-  background: colors.$bg;
-  border-bottom: 1px solid colors.$hl;
+  border-bottom: 1px solid;
+  .dark & {
+    border-color: colors.$hl-dark;
+  }
+  .light & {
+    border-color: colors.$hl-light;
+  }
 }
 
 .bottom {
-  margin: 0.6em 0;
+  padding: 0.6em 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 0.3em;
+  
+  .dark & {
+    background: colors.$hhl-dark;
+  }
+  .light & {
+    background: colors.$hhl-light;
+  }
 
   @include tablet {
     flex-direction: column;
@@ -57,9 +76,13 @@
   flex-grow: 0;
   background: none;
   border: none;
-  color: colors.$fg;
   margin: 0 0.3em;
-
+  .dark & {
+    color: colors.$fg-dark;
+  }
+  .light & {
+    color: colors.$fg-light;
+  }
   &:hover {
     cursor: pointer;
     text-decoration: underline;

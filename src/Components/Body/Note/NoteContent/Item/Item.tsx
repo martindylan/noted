@@ -2,6 +2,7 @@ import { useState, FunctionComponent, useEffect, useRef, useCallback } from 'rea
 import { useGlobal } from '../../../../../GlobalContext';
 import { useNote } from '../../NoteContext';
 import styles from './Item.module.scss';
+import inputTextBox from '../../../../../Resources/SASS/inputTextBox.module.scss';
 // Components
 import Tools from './Tools/Tools';
 
@@ -183,24 +184,24 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     switch (type) {
       case 'text':
         return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
       case 'heading':
         return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${styles.heading} ${dragEnterStyle}`} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${styles.heading} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
       case 'bulleted':
         return (
           <>
-            <div className={styles.bulleted}><div className={styles.bullet}></div></div>
-            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
+            <div className={styles.bulleted}><div className={`${styles.bullet} ${styles[global.theme]}`}></div></div>
+            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
           </>
         );
       case 'checkbox':
         return (
           <>
             <div className={`${styles.checkbox} checked${checked}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>
-            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
+            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
           </>
         );
       case 'none':
@@ -209,7 +210,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
         )
       default:
         return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${dragEnterStyle}`} placeholder='...'></textarea>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
         );
     }
   }

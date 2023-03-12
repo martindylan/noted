@@ -1,5 +1,17 @@
+@use './Resources/SASS/colors.scss';
+
 .App {
   display: flex;
   flex-direction: column;
   position: relative;
+
+  &.dark {
+    background: colors.$bg-dark;
+    color: colors.$fg-dark;
+  }
+
+  &.light {
+    background: colors.$bg-light;
+    color: colors.$fg-light;
+  }
 }

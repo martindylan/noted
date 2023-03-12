@@ -16,12 +16,21 @@
   z-index: 2;
   border-radius: 0.3em;
   padding: 0.2em;
-  background: colors.$hhl;
   margin-left: calc(-100% + 0.3em);
   transition: 100ms;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 1em 0.2em colors.$shadow;
+  box-shadow: 0 0 1em 0.2em;
+
+  &.dark {
+    background: colors.$hhl-dark;
+    color: colors.$shadow-dark;
+  }
+
+  &.light {
+    background: colors.$hl-light;
+    color: colors.$shadow-light;
+  }
 
   &.fromToolsUp {
     transform: translateY(calc(-100% - 0.5em));
@@ -55,6 +64,14 @@
     user-select: none;
     align-self: center;
     padding: 0.1em;
+
+    &.dark {
+      filter: invert(0%);
+    }
+
+    &.light {
+      filter: invert(100%);
+    }
   }
 }
 
@@ -65,13 +82,27 @@
 
 .enabled {
   &:hover {
-    background: colors.$hl;
     cursor: pointer;
+
+    .dark & {
+      background: colors.$hl-dark;
+    }
+
+    .light & {
+      background: colors.$hhl-light;
+    }
   }
 
   &:focus {
     outline: none;
-    background: colors.$hl;
+
+    .dark & {
+      background: colors.$hl-dark;
+    }
+
+    .light & {
+      background: colors.$hhl-light;
+    }
   }
 }
 

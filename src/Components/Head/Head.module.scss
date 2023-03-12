@@ -1,20 +1,33 @@
 @use '../../Resources/SASS/colors';
 @use '../../Resources/SASS/mixins' as *;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .Head {
-  background: colors.$hhl;
   display: flex;
   flex-grow: 0;
   align-items: center;
-  border-bottom: 1px solid colors.$hl;
   user-select: none;
+  border-bottom: 1px solid;
+
+  &.dark {
+    background: colors.$hhl-dark;
+    border-color: colors.$hl-dark;
+  }
+
+  &.light {
+    background: colors.$hhl-light;
+    border-color: colors.$hl-light;
+  }
 }
 
 .title {
   display: inline-block;
   margin: 0;
-  padding: 0.3em;
+  padding: 0 0.3em;
   font-size: 3em;
+  font-family: Great Vibes;
+  font-weight: normal;
+  font-style: italic;
 }
 
 .subtitle {
@@ -41,5 +54,11 @@
   img {
     width: 2.5em;
     height: 2.5em;
+    &.dark {
+      filter: invert(0%);
+    }
+    &.light {
+      filter: invert(100%);
+    }
   }
 }

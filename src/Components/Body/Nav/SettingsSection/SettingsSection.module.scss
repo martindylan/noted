@@ -1,3 +1,5 @@
+@use '../../../../Resources/SASS/colors.scss';
+
 .centeredButtons {
   display: flex;
   justify-content: center;
@@ -11,5 +13,31 @@
     visibility: hidden;
     width: 0;
     height: 0;
+  }
+}
+
+select {
+  padding: 0.2em 0;
+  border: none;
+  border-radius: 0.25rem;
+
+  &.dark {
+    background: colors.$hl-dark;
+    color: colors.$fg-dark;
+  }
+
+  &.light {
+    background: colors.$hl-light;
+    color: colors.$fg-light;
+  }
+
+  &:focus {
+    &.dark {
+      outline: 1px solid colors.$fg-dark;
+    }
+
+    &.light {
+      outline: 1px solid colors.$fg-light;
+    }
   }
 }

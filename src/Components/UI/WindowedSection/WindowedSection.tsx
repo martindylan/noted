@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
 import styles from './WindowedSection.module.scss';
 import closeImg from '../../../Resources/Img/close.png';
+import { useGlobal } from '../../../GlobalContext';
 
 interface IWindowedSectionProps {
   title: string;
@@ -9,11 +10,12 @@ interface IWindowedSectionProps {
   isOpen: (open: boolean) => void;
 }
 const WindowedSection: FunctionComponent<IWindowedSectionProps> = (props) => {
+  const { global } = useGlobal();
   const close = () => {
     props.isOpen(false);
   }
   return (
-    <div className={styles.WindowedSection}>
+    <div className={`${styles.WindowedSection} ${styles[global.theme]}`}>
       <div className={styles.topBar}>
         <h2>{props.title}</h2>
         <button className={styles.close} onClick={close}><img src={closeImg} alt='close'></img></button>

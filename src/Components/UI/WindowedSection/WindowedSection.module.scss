@@ -11,64 +11,95 @@
   width: max-content;
   max-width: 90vw;
   transform: translate(-50%, -50%);
-  background: colors.$bg;
-  border: 1px solid colors.$hl;
+
+  border: 1px solid;
   border-radius: 1rem;
+
+  &.dark {
+    background: colors.$bg-dark;
+    border-color: colors.$hl-dark;
+  }
+
+  &.light {
+    background: colors.$bg-light;
+    border-color: colors.$hl-light;
+  }
 
   @include tablet {
     width: fit-content;
   }
 
-  select {
-    background: colors.$hl;
-    color: colors.$fg;
-    padding: 0.2em 0.4em;
-    border: none;
-    border-radius: 0.25rem;
-
-    &:focus {
-      outline: 1px solid colors.$fg;
-    }
-  }
-
   hr {
-    border: none;
-    border-top: 1px solid colors.$hl;
     margin: 1em 0;
+    border: none;
+    border-top: 1px solid;
+    border-color: inherit;
   }
 }
 
 .topBar {
   padding: 1em;
-  background: colors.$hhl;
-  border-bottom: 1px solid colors.$hl;
+  
+  border-bottom: 1px solid;
+  border-color: inherit;
   border-radius: 1rem 1rem 0 0;
   display: flex;
+
+  .dark & {
+    background: colors.$hhl-dark;
+  }
+  .light & {
+    background: colors.$hhl-light;
+  }
 
   h2 {
     display: inline;
     margin: 0;
     flex-grow: 1;
   }
+
   .close {
     background: none;
     padding: 0;
     border: none;
+
     &:hover {
       cursor: pointer;
     }
+
     img {
       width: 2em;
       height: 2em;
+      .dark & {
+        filter: invert(0%);
+      }
+      .light & {
+        filter: invert(100%);
+      }
     }
   }
 }
 
 .content {
   padding: 1em;
+  border: none;
+  .dark & {
+    border-color: inherit;
+  }
+
+  .light & {
+    border-color: inherit;
+  }
 
   a {
-    color: colors.$fg;
+    .dark & {
+      color: colors.$fg-dark;
+    }
+
+    .light & {
+      color: colors.$fg-light;
+    }
+
     font-weight: bold;
   }
 }

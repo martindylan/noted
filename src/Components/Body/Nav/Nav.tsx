@@ -12,7 +12,7 @@ export default function Nav() {
   const [aboutOpened, setAboutOpened] = useState(false);
   const { global, setGlobal } = useGlobal();
   const notes = global.notes;
-  console.log("Nav.tsx render")
+
   const addNote = () => {
     const newNotes = [...notes];
     const newTitle = prompt('Give your note a fancy title:');
@@ -32,7 +32,7 @@ export default function Nav() {
 
   return (
     <>
-      <div className={`${styles.Nav} ${global.dropDown ? styles.dropped : ''}`}>
+      <div className={`${styles.Nav} ${styles[global.theme]} ${global.dropDown ? styles.dropped : ''}`}>
         <div className={`${styles.list} ${scrollable.scrollable}`}>
           {notes.map((note: object, i: number) => {
             return <NavNote key={i} note={i}></NavNote>;

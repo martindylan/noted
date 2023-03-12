@@ -4,14 +4,28 @@
   padding: 0.2em 0.4em;
   border: none;
   border-radius: 0.25rem;
-  background: colors.$hl;
-  color: colors.$fg;
+
+  &.dark {
+    background: colors.$hl-dark;
+    color: colors.$fg-dark;
+  }
+
+  &.light {
+    background: colors.$hl-light;
+    color: colors.$fg-light;
+  }
 
   &:hover {
     cursor: pointer;
   }
 
   &:focus {
-    outline: 1px solid colors.$fg;
+    &.dark {
+      outline: 1px solid colors.$fg-dark;
+    }
+
+    &.light {
+      outline: 1px solid colors.$fg-light;
+    }
   }
 }

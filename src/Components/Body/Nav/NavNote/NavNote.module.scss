@@ -18,7 +18,14 @@
 
   &.currenttrue {
     width: 0.5em;
-    background: colors.$fg;
+
+    .dark & {
+      background: colors.$fg-dark;
+    }
+
+    .light & {
+      background: colors.$fg-light;
+    }
   }
 }
 
@@ -30,22 +37,41 @@
   transition-duration: 100ms;
 
   &.currenttrue {
-    background: colors.$hl;
+    .dark & {
+      background: colors.$hl-dark;
+    }
+
+    .light & {
+      background: colors.$hl-light;
+    }
 
     &:hover {
-      background: colors.$hl;
+      .dark & {
+        background: colors.$hl-dark;
+      }
+
+      .light & {
+        background: colors.$hl-light;
+      }
     }
   }
 
   &:hover {
     cursor: pointer;
-    background: colors.$hhl;
+
+    .dark & {
+      background: colors.$hhl-dark;
+    }
+
+    .light & {
+      background: colors.$hhl-light;
+    }
   }
 
   &:empty::before {
     content: '...';
     display: inline-block;
-    color: colors.$mg;
+    opacity: 0.5;
   }
 }
 
