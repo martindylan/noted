@@ -5,16 +5,19 @@ import scrollable from '../../../Resources/SASS/scrollable.module.scss';
 import { NoteContextProvider } from './NoteContext';
 import NoteTitle from './NoteTitle/NoteTitle';
 import NoteContent from './NoteContent/NoteContent';
+import { useGlobal } from '../../../GlobalContext';
 
 interface INoteProps {
   note: number;
 }
 
 const Note: FunctionComponent<INoteProps> = (props) => {
+  const { global } = useGlobal();
+  
   return (
     <div className={`${styles.Note}`} >
       <NoteContextProvider note={props.note}>
-        <div className={scrollable.scrollable}>
+        <div className={`${scrollable.scrollable} ${scrollable[global.theme]}`}>
           <NoteTitle></NoteTitle>
           <NoteContent></NoteContent>
         </div>

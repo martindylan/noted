@@ -33,7 +33,7 @@ export default function Nav() {
   return (
     <>
       <div className={`${styles.Nav} ${styles[global.theme]} ${global.dropDown ? styles.dropped : ''}`}>
-        <div className={`${styles.list} ${scrollable.scrollable}`}>
+        <div className={`${styles.list} ${scrollable.scrollable} ${scrollable[global.theme]}`}>
           {notes.map((note: object, i: number) => {
             return <NavNote key={i} note={i}></NavNote>;
           })}
