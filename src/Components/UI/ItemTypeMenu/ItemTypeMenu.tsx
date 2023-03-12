@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from 'react';
-import styles from './ItemTypeMenu.module.css';
+import styles from './ItemTypeMenu.module.scss';
 import text from './img/text.png';
 import heading from './img/heading.png';
 import bulleted from './img/bulleted.png';
@@ -32,12 +32,13 @@ const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
   let fromToolsStyle;
   if (props.fromTools && id !== null) {
     fromToolsStyle = id > 1 ? styles.fromToolsUp : styles.fromToolsDown;
+    // fromToolsStyle = styles.fromTools;
   } else {
     fromToolsStyle = styles.notFromTools;
   }
 
   return (
-    <div className={`${styles.this} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}>
+    <div className={`${styles.ItemTypeMenu} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}>
       <div className={styles.row}>
         <button className={isText ? styles.disabled : styles.enabled} disabled={isText} onClick={() => sendType('text', id ? id : null)}>
           <img src={text} alt='text' draggable="false" />

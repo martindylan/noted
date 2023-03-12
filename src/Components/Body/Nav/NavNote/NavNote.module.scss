@@ -1,0 +1,62 @@
+@use '../../../../Resources/SASS/colors';
+@use '../../../../Resources/SASS/mixins' as *;
+
+.NavNote {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25em;
+}
+
+.bullet {
+  aspect-ratio: 1/1;
+  height: 0.5em;
+  border-radius: 100%;
+  background: none;
+  flex-shrink: 0;
+  width: 0;
+  transition-duration: 200ms;
+
+  &.currenttrue {
+    width: 0.5em;
+    background: colors.$fg;
+  }
+}
+
+.title {
+  margin: 0 0.3em;
+  padding: 0.3em 0.3em;
+  border-radius: 0.2rem;
+  word-break: break-word;
+  transition-duration: 100ms;
+
+  &.currenttrue {
+    background: colors.$hl;
+
+    &:hover {
+      background: colors.$hl;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: colors.$hhl;
+  }
+
+  &:empty::before {
+    content: '...';
+    display: inline-block;
+    color: colors.$mg;
+  }
+}
+
+.NavNote button img {
+  opacity: 1;
+}
+
+.editButton {
+  display: flex;
+
+  @include tablet {
+    display: none;
+  }
+}

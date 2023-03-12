@@ -1,3 +1,18 @@
+.Tools {
+  display: flex;
+  position: relative;
+  margin-left: 0.5em;
+
+  button {
+    margin-right: 0.1em;
+    padding: 0.2em;
+  }
+
+  img {
+    transition-duration: 100ms;
+  }
+}
+
 .hidden {
   visibility: hidden;
 }
@@ -6,33 +21,23 @@
   visibility: visible;
 }
 
-.this {
-  display: flex;
-  position: relative;
-  margin-left: 0.5em;
-}
-
-.this button {
-  margin-right: 0.1em;
-  padding: 0.2em;
-}
-
-.this img {
-  transition-duration: 100ms;
-}
 .visible img {
   opacity: 1;
   transform: translateY(0);
 }
+
 .hidden img {
   opacity: 0;
 }
+
 .hidden img.first {
   transform: translateY(1em);
 }
+
 .hidden img.second {
   transform: translateY(1.25em);
 }
+
 .hidden img.last {
   transform: translateY(1.5em);
 }
@@ -41,12 +46,14 @@
   cursor: pointer;
 }
 
-.draggable:hover {
-  cursor: move;
-}
+.draggable {
+  &:hover {
+    cursor: move;
+  }
 
-.draggable:active {
-  cursor: grabbing;
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .changeType {

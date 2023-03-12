@@ -1,9 +1,12 @@
-.this {
-  background: var(--hhl);
+@use '../../Resources/SASS/colors';
+@use '../../Resources/SASS/mixins' as *;
+
+.Head {
+  background: colors.$hhl;
   display: flex;
   flex-grow: 0;
   align-items: center;
-  border-bottom: 1px solid var(--hl);
+  border-bottom: 1px solid colors.$hl;
   user-select: none;
 }
 
@@ -19,6 +22,10 @@
   margin-left: 1ch;
   display: none;
   flex-grow: 1;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .dropdown {
@@ -26,27 +33,13 @@
   margin-right: 1em;
   display: flex;
   justify-content: flex-end;
-}
 
-@media (min-width: 768px) {
-  .subtitle {
-    display: block;
-  }
-
-  .dropdown {
+  @include tablet {
     display: none;
   }
-}
 
-.dropdown img {
-  width: 2.5em;
-  height: 2.5em;
-}
-
-.bold {
-  background: pink;
-  display: inline-block;
-  color: var(--bg);
-  border-radius: 25%;
-  aspect-ratio: 1 / 1;
+  img {
+    width: 2.5em;
+    height: 2.5em;
+  }
 }

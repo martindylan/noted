@@ -20,7 +20,7 @@ export const NoteContextProvider: FunctionComponent<NoteContextProviderProps> = 
   useEffect(() => {
     let newNotes = [...global.notes];
     newNotes[props.note] = note;
-    setGlobal({ ...global, notes: newNotes })
+    setGlobal({ ...global, notes: newNotes });
   }, [note])
 
   return (

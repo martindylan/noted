@@ -1,7 +1,7 @@
 import { useState, FunctionComponent, useEffect, useRef, useCallback } from 'react';
 import { useGlobal } from '../../../../../GlobalContext';
 import { useNote } from '../../NoteContext';
-import styles from './Item.module.css';
+import styles from './Item.module.scss';
 // Components
 import Tools from './Tools/Tools';
 
@@ -75,7 +75,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     const input = inputRef.current;
     if (input && focus && !global.dropDown) {
       input.focus();  // Focus element
-      if (id === note.items.length - 1 && window.screen.width>=768) { // If this is the last item
+      if (id === note.items.length - 1 && window.screen.width>=768) { // If this is the last item && not on mobile phone
         props.scrollToBottom(); // Scroll down to the bottom so that the + button is visible
       }
     }
@@ -215,7 +215,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   }
 
   return (
-    <div ref={mainRef} className={styles.this}>
+    <div ref={mainRef} className={styles.Item}>
       {makeItem()}
       {type !== 'none' &&
         <>

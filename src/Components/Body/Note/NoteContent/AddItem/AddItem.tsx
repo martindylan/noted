@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from 'react';
 import ItemTypeMenu from '../../../../UI/ItemTypeMenu/ItemTypeMenu';
-import styles from './AddItem.module.css';
-import button from '../../../../../Resources/CSS/button.module.css';
+import styles from './AddItem.module.scss';
+import button from '../../../../../Resources/SASS/button.module.scss';
 import addImg from '../../../../../Resources/Img/add.png';
 
 interface IAddItemProps {
@@ -34,7 +34,7 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
   }
 
   return (
-    <div onBlur={focusOut} onKeyDown={keyDown} className={styles.this}>
+    <div onBlur={focusOut} onKeyDown={keyDown} className={styles.AddItem}>
       <button className={button.button} onClick={activate}><img src={addImg} alt='+'></img></button>
       <ItemTypeMenu sendTypeToParent={getItemType} visibility={active} id={null} fromTools={false} />
     </div>

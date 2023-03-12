@@ -1,0 +1,41 @@
+@use './colors';
+
+.button {
+  display: flex;
+  height: 1.5em;
+  width: 1.5em;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 0.2rem;
+  font-weight: bold;
+  background: colors.$bg;
+  color: colors.$mg;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  transition-duration: 100ms;
+
+  &:hover {
+    cursor: pointer;
+    background: colors.$hl;
+    color: colors.$fg;
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    background: colors.$hl;
+    color: colors.$fg;
+  }
+
+  img {
+    height: 1.2em;
+    opacity: 0.5;
+    user-select: none;
+    transition-duration: 100ms;
+  }
+}

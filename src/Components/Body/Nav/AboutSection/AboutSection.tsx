@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
-import styles from './AboutSection.module.css';
+import styles from './AboutSection.module.scss';
 
 interface IAboutSectionProps {
-  isOpen: any;
+  isOpen: (open: boolean)=>void;
 }
 
 const AboutSection: FunctionComponent<IAboutSectionProps> = (props) => {
@@ -15,7 +15,8 @@ const AboutSection: FunctionComponent<IAboutSectionProps> = (props) => {
       <div>Other tech used:</div>
       <ul>
         <li><a href='https://github.com/eligrey/FileSaver.js' target='_blank'>FileSaver.js</a></li>
-        <li><a href='https://github.com/peterh32/react-drag-drop-container' target='_blank'>react-drag-drop-container</a> (yet to be implemented)</li>
+        <li><a href='https://sass-lang.com/' target='_blank'>Sass</a></li>
+        <li><a href='https://github.com/peterh32/react-drag-drop-container' target='_blank'>react-drag-drop-container</a> (coming soon)</li>
       </ul>
       <div className={styles.foot}>
         <div>Dylan Martin, 2023</div>

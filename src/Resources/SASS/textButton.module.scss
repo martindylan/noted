@@ -1,0 +1,17 @@
+@use './colors';
+
+.textButton {
+  padding: 0.2em 0.4em;
+  border: none;
+  border-radius: 0.25rem;
+  background: colors.$hl;
+  color: colors.$fg;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 1px solid colors.$fg;
+  }
+}

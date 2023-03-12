@@ -1,12 +1,12 @@
 import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
-import styles from './SettingsSection.module.css';
-import textButton from '../../../../Resources/CSS/textButton.module.css'
+import styles from './SettingsSection.module.scss';
+import textButton from '../../../../Resources/SASS/textButton.module.scss'
 import { useGlobal } from '../../../../GlobalContext';
 import { saveAs } from 'file-saver';
 import { FunctionComponent } from 'react';
 
 interface ISettingsSectionProps {
-  isOpen: any;
+  isOpen: (open: boolean)=>void;
 }
 
 const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {

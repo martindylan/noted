@@ -1,5 +1,5 @@
 import { useNote } from '../NoteContext';
-import styles from './NoteContent.module.css';
+import styles from './NoteContent.module.scss';
 // Components
 import Item from './Item/Item';
 import AddItem from './AddItem/AddItem';
@@ -32,7 +32,7 @@ export default function NoteContent() {
   }
 
   return (
-    <div className={styles.this}>
+    <div className={styles.NoteContent}>
       <Item key={-1} id={-1} type={'none'} focus={false} removeItem={removeItem} addItem={addItem} scrollToBottom={scrollToBottom} />
       {note.items.map((item: any, i: number) => {
         const isFocused = note.focus === i;

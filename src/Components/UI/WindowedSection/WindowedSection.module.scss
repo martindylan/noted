@@ -1,0 +1,74 @@
+@use '../../../Resources/SASS/colors';
+@use '../../../Resources/SASS/mixins' as *;
+
+.WindowedSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  width: max-content;
+  max-width: 90vw;
+  transform: translate(-50%, -50%);
+  background: colors.$bg;
+  border: 1px solid colors.$hl;
+  border-radius: 1rem;
+
+  @include tablet {
+    width: fit-content;
+  }
+
+  select {
+    background: colors.$hl;
+    color: colors.$fg;
+    padding: 0.2em 0.4em;
+    border: none;
+    border-radius: 0.25rem;
+
+    &:focus {
+      outline: 1px solid colors.$fg;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid colors.$hl;
+    margin: 1em 0;
+  }
+}
+
+.topBar {
+  padding: 1em;
+  background: colors.$hhl;
+  border-bottom: 1px solid colors.$hl;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+
+  h2 {
+    display: inline;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .close {
+    background: none;
+    padding: 0;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+}
+
+.content {
+  padding: 1em;
+
+  a {
+    color: colors.$fg;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,10 @@
+@use './Resources/SASS/colors';
+
+body {
+  margin: 0;
+  font-family: monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: colors.$bg;
+  color: colors.$fg;
+}

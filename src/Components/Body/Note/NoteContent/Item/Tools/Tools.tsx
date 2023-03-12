@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from 'react';
-import styles from './Tools.module.css';
-import button from '../../../../../../Resources/CSS/button.module.css';
+import styles from './Tools.module.scss';
+import button from '../../../../../../Resources/SASS/button.module.scss';
 // Resources
 import trashcanImg from '../../../../../../Resources/Img/trashcan.png';
 import changeImg from '../../../../../../Resources/Img/change.png';
@@ -38,7 +38,7 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
   }
 
   return (
-    <div className={`${styles.this} ${styles[props.visibility]}`}>
+    <div className={`${styles.Tools} ${styles[props.visibility]}`}>
       <button className={`${styles.clickable} ${button.button}`} onClick={remove}><img className={styles.first} draggable="false" src={trashcanImg} alt="delete"></img></button>
       <div className={styles.changeType} onBlur={focusOut}>
         <button className={`${styles.clickable} ${button.button}`} onClick={(e) => setDisplayChange(true)}><img className={styles.second} draggable="false" src={changeImg} alt="change"></img></button>

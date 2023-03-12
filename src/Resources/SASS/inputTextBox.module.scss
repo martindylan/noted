@@ -1,3 +1,5 @@
+@use './colors';
+
 .inputTextBox {
   min-width: 3ch;
   padding: 0.25rem 0.5rem;
@@ -5,18 +7,19 @@
   border: none;
   border-radius: 0.2rem;
   background: none;
-  color: var(--fg);
+  color: colors.$fg;
   word-break: break-word;
   transition-property: background-color;
   transition-duration: 100ms;
   resize: none;
-  overflow:hidden;
-}
+  overflow: hidden;
 
-.inputTextBox:hover {
-  background: var(--hhl);
-}
-.inputTextBox:focus {
-  outline: none;
-  background: var(--hl);
+  &:hover {
+    background: colors.$hhl;
+  }
+
+  &:focus {
+    outline: none;
+    background: colors.$hl;
+  }
 }

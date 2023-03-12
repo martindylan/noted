@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import styles from './AddNote.module.css';
-import button from '../../../../Resources/CSS/button.module.css';
+import styles from './AddNote.module.scss';
+import button from '../../../../Resources/SASS/button.module.scss';
 import addImg from '../../../../Resources/Img/add.png';
 
 interface IAddNoteProps {
@@ -10,7 +10,7 @@ interface IAddNoteProps {
 const AddNote: FunctionComponent<IAddNoteProps> = (props) => {
 
   return (
-    <button className={`${styles.this} ${button.button}`} onClick={props.addNote}><img src={addImg} alt='+'></img></button>
+    <button className={`${styles.AddNote} ${button.button}`} onClick={props.addNote}><img src={addImg} alt='+'></img></button>
   )
 }
 

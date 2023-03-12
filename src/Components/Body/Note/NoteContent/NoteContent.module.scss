@@ -1,9 +1,9 @@
-.this {
+.NoteContent {
   display: flex;
   flex-direction: column;
   padding: 0 0.5em;
-}
 
-.this > div:first-child {
-  margin-top: 2em;
+  &>div:first-child {
+    margin-top: 2em;
+  }
 }

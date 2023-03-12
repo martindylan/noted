@@ -1,7 +1,7 @@
 import { useGlobal } from '../../../GlobalContext';
 import AddNote from './AddNote/AddNote';
-import styles from './Nav.module.css'
-import scrollable from '../../../Resources/CSS/scrollable.module.css';
+import styles from './Nav.module.scss'
+import scrollable from '../../../Resources/SASS/scrollable.module.scss';
 import NavNote from './NavNote/NavNote';
 import { useState } from 'react';
 import SettingsSection from './SettingsSection/SettingsSection';
@@ -12,7 +12,7 @@ export default function Nav() {
   const [aboutOpened, setAboutOpened] = useState(false);
   const { global, setGlobal } = useGlobal();
   const notes = global.notes;
-
+  console.log("Nav.tsx render")
   const addNote = () => {
     const newNotes = [...notes];
     const newTitle = prompt('Give your note a fancy title:');
@@ -32,12 +32,12 @@ export default function Nav() {
 
   return (
     <>
-      <div className={`${styles.this} ${global.dropDown ? styles.dropped : ''}`}>
+      <div className={`${styles.Nav} ${global.dropDown ? styles.dropped : ''}`}>
         <div className={`${styles.list} ${scrollable.scrollable}`}>
           {notes.map((note: object, i: number) => {
             return <NavNote key={i} note={i}></NavNote>;
           })}
-          <AddNote addNote={addNote}></AddNote>
+          <AddNote addNote={addNote} />
         </div>
         <div className={styles.bottom}>
           {/* <span className={styles.text}>Coming to Android soon!</span> */}
@@ -47,10 +47,10 @@ export default function Nav() {
       </div>
       {(settingsOpened || aboutOpened) && <div onClick={() => { setSettingsOpened(false); setAboutOpened(false); }} className={styles.greyedout}></div>}
       {settingsOpened &&
-        <SettingsSection isOpen={setSettingsOpened}/>
+        <SettingsSection isOpen={setSettingsOpened} />
       }
       {aboutOpened &&
-        <AboutSection isOpen={setSettingsOpened}/>
+        <AboutSection isOpen={setAboutOpened} />
       }
     </>
   )

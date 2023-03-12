@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import styles from './Note.module.css';
-import scrollable from '../../../Resources/CSS/scrollable.module.css';
+import styles from './Note.module.scss';
+import scrollable from '../../../Resources/SASS/scrollable.module.scss';
 // Components
 import { NoteContextProvider } from './NoteContext';
 import NoteTitle from './NoteTitle/NoteTitle';
@@ -12,7 +12,7 @@ interface INoteProps {
 
 const Note: FunctionComponent<INoteProps> = (props) => {
   return (
-    <div className={`${styles.this}`} >
+    <div className={`${styles.Note}`} >
       <NoteContextProvider note={props.note}>
         <div className={scrollable.scrollable}>
           <NoteTitle></NoteTitle>

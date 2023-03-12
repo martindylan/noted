@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useRef, useCallback } from 'react'
 import { useNote } from '../NoteContext';
-import styles from './NoteTitle.module.css';
-import inputTextBox from '../../../../Resources/CSS/inputTextBox.module.css';
+import styles from './NoteTitle.module.scss';
+import inputTextBox from '../../../../Resources/SASS/inputTextBox.module.scss';
 
 const NoteTitle: FunctionComponent = () => {
 
@@ -49,7 +49,7 @@ const NoteTitle: FunctionComponent = () => {
   }, [updateItems])
 
   return (
-    <div className={`${styles.this}`}>
+    <div className={`${styles.NoteTitle}`}>
       <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox}`} placeholder='...'></textarea>
     </div>
   )

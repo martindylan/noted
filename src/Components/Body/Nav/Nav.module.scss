@@ -1,7 +1,10 @@
-.this {
-  background: var(--hhl);
+@use '../../../Resources/SASS/colors';
+@use '../../../Resources/SASS/mixins' as *;
+
+.Nav {
+  background: colors.$hhl;
   flex-direction: column;
-  border-right: 1px solid var(--hl);
+  border-right: 1px solid colors.$hl;
   user-select: none;
   display: flex;
   position: absolute;
@@ -10,31 +13,29 @@
   opacity: 0;
   transition: 100ms;
   z-index: 1;
-}
 
-.dropped {
-  height: calc(100% - 5.5em);
-  opacity: 1;
-}
-
-@media (min-width: 768px) {
-  .this {
+  @include tablet {
     width: 30ch;
     position: static;
     flex-grow: 0;
     opacity: 1;
     height: auto;
   }
+}
 
-  .dropped {
+.dropped {
+  height: calc(100% - 5.5em);
+  opacity: 1;
+
+  @include tablet {
     height: auto;
   }
 }
 
 .list {
   padding: 1em 0.5em 0.5em;
-  background: var(--bg);
-  border-bottom: 1px solid var(--hl);
+  background: colors.$bg;
+  border-bottom: 1px solid colors.$hl;
 }
 
 .bottom {
@@ -43,9 +44,8 @@
   flex-direction: row;
   justify-content: center;
   gap: 0.3em;
-}
-@media (min-width: 768px) {
-  .bottom {
+
+  @include tablet {
     flex-direction: column;
   }
 }
@@ -57,17 +57,18 @@
   flex-grow: 0;
   background: none;
   border: none;
-  color: var(--fg);
+  color: colors.$fg;
   margin: 0 0.3em;
-}
 
-.link:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-.link:focus {
-  outline: none;
-  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
 }
 
 .greyedout {

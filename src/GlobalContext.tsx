@@ -36,7 +36,7 @@ const defaultData = {
           {
             content: `...and we're items!`, // Item text
             type: 'text' // Item type (text/heading/bulleted/checkbox)
-            // checked: false // For checkbox type items only, specifies if it's checked or not
+            // checked: false // For checkbox type only, specifies if it's checked or not
           },
           {
             content: `We can be changed, edited, moved or deleted.`,
