@@ -53,7 +53,7 @@ const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
       </div>
       <br></br>
       <label htmlFor='themeSelect'>Theme: </label>
-      <select className={styles[global.theme]} name='theme' id='themeSelect' onInput={changeTheme} >
+      <select className={styles[global.theme]} name='theme' id='themeSelect' onInput={changeTheme} value={global.themeSelect} >
         <option value='system'>System preference</option>
         <option value='dark'>Dark</option>
         <option value='light'>Light</option>
