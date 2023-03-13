@@ -37,26 +37,30 @@ const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
   } else {
     fromToolsStyle = styles.notFromTools;
   }
-
   return (
-    <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}>
-      <div className={styles.row}>
-        <button className={isText ? styles.disabled : styles.enabled} disabled={isText} onClick={() => sendType('text', id ? id : null)}>
-          <img className={styles[global.theme]} src={text} alt='text' draggable="false" />
-        </button>
-        <button className={isHeading ? styles.disabled : styles.enabled} disabled={isHeading} onClick={() => sendType('heading', id ? id : null)}>
-          <img className={styles[global.theme]} src={heading} alt='heading' draggable="false" />
-        </button>
-      </div>
-      <div className={styles.row}>
-        <button className={isBulleted ? styles.disabled : styles.enabled} disabled={isBulleted} onClick={() => sendType('bulleted', id ? id : null)}>
-          <img className={styles[global.theme]} src={bulleted} alt='bulleted' draggable="false" />
-        </button>
-        <button className={isCheckbox ? styles.disabled : styles.enabled} disabled={isCheckbox} onClick={() => sendType('checkbox', id ? id : null)}>
-          <img className={styles[global.theme]} src={checkbox} alt='checkbox' draggable="false" />
-        </button>
-      </div>
-    </div >
+    <>
+      {props.visibility &&
+        <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`}>
+          {/* <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}> */}
+          <div className={styles.row}>
+            <button className={isText ? styles.disabled : styles.enabled} disabled={isText} onClick={() => sendType('text', id ? id : null)}>
+              <img className={styles[global.theme]} src={text} alt='text' draggable="false" />
+            </button>
+            <button className={isHeading ? styles.disabled : styles.enabled} disabled={isHeading} onClick={() => sendType('heading', id ? id : null)}>
+              <img className={styles[global.theme]} src={heading} alt='heading' draggable="false" />
+            </button>
+          </div>
+          <div className={styles.row}>
+            <button className={isBulleted ? styles.disabled : styles.enabled} disabled={isBulleted} onClick={() => sendType('bulleted', id ? id : null)}>
+              <img className={styles[global.theme]} src={bulleted} alt='bulleted' draggable="false" />
+            </button>
+            <button className={isCheckbox ? styles.disabled : styles.enabled} disabled={isCheckbox} onClick={() => sendType('checkbox', id ? id : null)}>
+              <img className={styles[global.theme]} src={checkbox} alt='checkbox' draggable="false" />
+            </button>
+          </div>
+        </div>
+      }
+    </>
   )
 }
 export default ItemTypeMenu;

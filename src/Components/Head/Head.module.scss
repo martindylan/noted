@@ -8,6 +8,7 @@
   align-items: center;
   user-select: none;
   border-bottom: 1px solid;
+  z-index: 1;
 
   &.dark {
     background: colors.$hhl-dark;

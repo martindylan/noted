@@ -17,7 +17,7 @@ type ToolsProps = {
 
 const Tools: FunctionComponent<ToolsProps> = (props) => {
 
-  const [displayChange, setDisplayChange] = useState(false);
+  const [showChangeType, setShowChangeType] = useState(false);
   const { global } = useGlobal();
   const id = props.id;
 
@@ -31,7 +31,7 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
 
   const focusOut = (e: any) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
-      setDisplayChange(false);
+      setShowChangeType(false);
     }
   }
 
@@ -41,12 +41,12 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
 
   return (
     <div className={`${styles.Tools} ${styles[props.visibility]}`}>
-      <button className={`${styles.clickable} ${button.button} ${button[global.theme]}`} onClick={remove}><img className={`${styles.first} ${button[global.theme]}`} draggable="false" src={trashcanImg} alt="delete"></img></button>
+      <button className={`${styles.clickable} ${button.button} ${styles.first} ${button[global.theme]}`} onClick={remove}><img className={`${button[global.theme]}`} draggable="false" src={trashcanImg} alt="delete"></img></button>
       <div className={styles.changeType} onBlur={focusOut}>
-        <button className={`${styles.clickable} ${button.button} ${button[global.theme]}`} onClick={(e) => setDisplayChange(true)}><img className={`${styles.second} ${button[global.theme]}`} draggable="false" src={changeImg} alt="change"></img></button>
-        <ItemTypeMenu visibility={displayChange} sendTypeToParent={getType} id={id} fromTools={true} />
+        <button className={`${styles.clickable} ${button.button} ${styles.second} ${button[global.theme]}`} onClick={(e) => setShowChangeType(true)}><img className={`${button[global.theme]}`} draggable="false" src={changeImg} alt="change"></img></button>
+        <ItemTypeMenu visibility={showChangeType} sendTypeToParent={getType} id={id} fromTools={true} />
       </div>
-      <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button} ${button[global.theme]}`}><img className={`${styles.last} ${button[global.theme]}`} draggable="false" src={moveImg} alt="move"></img></button>
+      <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button} ${styles.last} ${button[global.theme]}`}><img className={`${button[global.theme]}`} draggable="false" src={moveImg} alt="move"></img></button>
     </div>
   )
 }

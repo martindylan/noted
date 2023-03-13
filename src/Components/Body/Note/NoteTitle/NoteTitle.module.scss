@@ -1,11 +1,14 @@
 .NoteTitle {
-  align-items: center;
+  
   display: flex;
-  padding: 0 0.5em;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.25rem 0.5rem;
+  text-decoration: underline double;
 }
 
 .input {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
   max-width: 36ch;
 }

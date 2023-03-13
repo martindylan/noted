@@ -7,15 +7,18 @@
   user-select: none;
   display: flex;
   position: absolute;
+  left: -100vw;
   width: 100vw;
-  height: 0;
+  height: 100%;
   opacity: 0;
-  transition: 100ms;
+  transition-duration: 250ms;
   z-index: 1;
+
   &.dark {
     background-color: colors.$bg-dark;
     border-color: colors.$hl-dark;
   }
+
   &.light {
     background-color: colors.$bg-light;
     border-color: colors.$hl-light;
@@ -31,8 +34,9 @@
 }
 
 .dropped {
-  height: calc(100% - 5.5em);
+  height: 100%;
   opacity: 1;
+  left: 0;
 
   @include tablet {
     height: auto;
@@ -42,9 +46,11 @@
 .list {
   padding: 1em 0.5em 0.5em;
   border-bottom: 1px solid;
+
   .dark & {
     border-color: colors.$hl-dark;
   }
+
   .light & {
     border-color: colors.$hl-light;
   }
@@ -54,51 +60,100 @@
   padding: 0.6em 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   gap: 0.3em;
-  
+  align-items: center;
+
   .dark & {
     background: colors.$hhl-dark;
   }
+
   .light & {
     background: colors.$hhl-light;
-  }
-
-  @include tablet {
-    flex-direction: column;
   }
 }
 
 .link {
-  font-size: 1.1em;
-  font-family: inherit;
-  font-weight: bold;
   flex-grow: 0;
   background: none;
   border: none;
-  margin: 0 0.3em;
+  margin: 0;
+  padding: 0.3em;
+  display: flex;
+  align-items: center;
+  transition-duration: 200ms;
+  outline: 1px solid;
+  outline-color: transparent;
+
   .dark & {
     color: colors.$fg-dark;
   }
+
   .light & {
     color: colors.$fg-light;
   }
+
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
+    border-radius: 100%;
+
+    .dark & {
+      background-color: colors.$hl-dark;
+    }
+
+    .light & {
+      background-color: colors.$hl-light;
+    }
   }
 
   &:focus {
-    outline: none;
-    text-decoration: underline;
+    border-radius: 100%;
+
+    .dark & {
+      background-color: colors.$hl-dark;
+    }
+
+    .light & {
+      background-color: colors.$hl-light;
+    }
+  }
+
+  img {
+    width: 1.5em;
+    height: 1.5em;
+    box-sizing: border-box;
+
+    .light & {
+      filter: invert(100%);
+    }
+  }
+}
+
+@keyframes greyedShow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
 .greyedout {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   width: 200vw;
   height: 200vh;
   transform: translateY(-50vh);
-  background: #0008;
+  user-select: none;
+  animation-name: greyedShow;
+  animation-duration: 200ms;
+
+  .dark & {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .light & {
+    background: rgba(0, 0, 0, 0.2);
+  }
 }

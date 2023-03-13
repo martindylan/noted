@@ -76,7 +76,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     const input = inputRef.current;
     if (input && focus && !global.dropDown) {
       input.focus();  // Focus element
-      if (id === note.items.length - 1 && window.screen.width>=768) { // If this is the last item && not on mobile phone
+      if (id === note.items.length - 1 && window.screen.width >= 768) { // If this is the last item && not on mobile phone
         props.scrollToBottom(); // Scroll down to the bottom so that the + button is visible
       }
     }
@@ -156,7 +156,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     return () => {
       // Remove main's event listeners for hover and focus
       main?.removeEventListener('mouseenter', showTools);
-      main?.removeEventListener('focusin', showTools);
+      main?.removeEventListener('focusin', setToCurrent);
       main?.removeEventListener('mouseleave', hideTools);
       main?.removeEventListener('focusout', hideTools);
     }
@@ -178,50 +178,20 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     updateElements();
   }, [note.items])
 
-  // Return JSX according to item type
-  const makeItem = () => {
-    const dragEnterStyle = draggedOver ? styles.draggedOver : styles.notDraggedOver;
-    switch (type) {
-      case 'text':
-        return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-        );
-      case 'heading':
-        return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${styles.heading} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-        );
-      case 'bulleted':
-        return (
-          <>
-            <div className={styles.bulleted}><div className={`${styles.bullet} ${styles[global.theme]}`}></div></div>
-            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-          </>
-        );
-      case 'checkbox':
-        return (
-          <>
-            <div className={`${styles.checkbox} checked${checked}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>
-            <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-          </>
-        );
-      case 'none':
-        return (
-          <div onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} className={`${styles.input} ${styles.none} ${dragEnterStyle}`}></div>
-        )
-      default:
-        return (
-          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-        );
-    }
-  }
+  const dragEnterStyle = draggedOver ? styles.draggedOver : styles.notDraggedOver;
 
   return (
     <div ref={mainRef} className={styles.Item}>
-      {makeItem()}
+      {type === 'bulleted' &&
+        <div className={styles.bulleted}><div className={`${inputTextBox.bullet} ${inputTextBox[global.theme]}`}></div></div>}
+
+      {type === 'checkbox' &&
+        <div className={`${inputTextBox.checkbox} ${inputTextBox['checked' + checked]} ${inputTextBox[global.theme]}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>}
+
+      <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
+
       {type !== 'none' &&
-        <>
-          <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType}></Tools>
-        </>
+        <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType} />
       }
     </div >
   )

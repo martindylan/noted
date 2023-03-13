@@ -5,7 +5,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  z-index: 3;
+  z-index: 4;
   left: 50%;
   top: 50%;
   width: max-content;
@@ -18,19 +18,25 @@
   &.dark {
     background: colors.$bg-dark;
     border-color: colors.$hl-dark;
+    box-shadow: 0 0 1rem 0.2rem #000;
   }
 
   &.light {
     background: colors.$bg-light;
     border-color: colors.$hl-light;
+    box-shadow: 0 0 1rem 0.2rem rgba(0, 0, 0, 0.2);
   }
 
   @include tablet {
     width: fit-content;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   hr {
-    margin: 1em 0;
+    margin: 1rem 0;
     border: none;
     border-top: 1px solid;
     border-color: inherit;
@@ -39,15 +45,17 @@
 
 .topBar {
   padding: 1em;
-  
+
   border-bottom: 1px solid;
   border-color: inherit;
   border-radius: 1rem 1rem 0 0;
   display: flex;
+  align-items: center;
 
   .dark & {
     background: colors.$hhl-dark;
   }
+
   .light & {
     background: colors.$hhl-light;
   }
@@ -62,17 +70,18 @@
     background: none;
     padding: 0;
     border: none;
+    display: flex;
+    border-radius: 100%;
 
     &:hover {
       cursor: pointer;
     }
 
     img {
-      width: 2em;
-      height: 2em;
-      .dark & {
-        filter: invert(0%);
-      }
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 100%;
+
       .light & {
         filter: invert(100%);
       }
@@ -81,8 +90,9 @@
 }
 
 .content {
-  padding: 1em;
+  padding: 1rem;
   border: none;
+
   .dark & {
     border-color: inherit;
   }

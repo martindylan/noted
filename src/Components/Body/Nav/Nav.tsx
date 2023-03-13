@@ -4,8 +4,10 @@ import styles from './Nav.module.scss'
 import scrollable from '../../../Resources/SASS/scrollable.module.scss';
 import NavNote from './NavNote/NavNote';
 import { useState } from 'react';
-import SettingsSection from './SettingsSection/SettingsSection';
 import AboutSection from './AboutSection/AboutSection';
+import SettingsSection from './SettingsSection/SettingsSection';
+import settingsImg from '../../../Resources/Img/settings.png';
+import aboutImg from '../../../Resources/Img/about.png';
 
 export default function Nav() {
   const [settingsOpened, setSettingsOpened] = useState(false);
@@ -33,6 +35,7 @@ export default function Nav() {
   return (
     <>
       <div className={`${styles.Nav} ${styles[global.theme]} ${global.dropDown ? styles.dropped : ''}`}>
+        {(settingsOpened || aboutOpened) && <div onClick={() => { setSettingsOpened(false); setAboutOpened(false); }} className={`${styles.greyedout} ${styles.show}`}></div>}
         <div className={`${styles.list} ${scrollable.scrollable} ${scrollable[global.theme]}`}>
           {notes.map((note: object, i: number) => {
             return <NavNote key={i} note={i}></NavNote>;
@@ -40,18 +43,16 @@ export default function Nav() {
           <AddNote addNote={addNote} />
         </div>
         <div className={styles.bottom}>
-          {/* <span className={styles.text}>Coming to Android soon!</span> */}
-          <button onClick={openSettings} className={styles.link}>Settings</button>
-          <button onClick={openAbout} className={styles.link}>About</button>
+          <button onClick={openSettings} className={styles.link}><img src={settingsImg} alt='Settings'></img></button>
+          {settingsOpened &&
+            <SettingsSection isOpen={setSettingsOpened} />
+          }
+          <button onClick={openAbout} className={styles.link}><img src={aboutImg} alt='About'></img></button>
+          {aboutOpened &&
+            <AboutSection isOpen={setAboutOpened} />
+          }
         </div>
       </div>
-      {(settingsOpened || aboutOpened) && <div onClick={() => { setSettingsOpened(false); setAboutOpened(false); }} className={styles.greyedout}></div>}
-      {settingsOpened &&
-        <SettingsSection isOpen={setSettingsOpened} />
-      }
-      {aboutOpened &&
-        <AboutSection isOpen={setAboutOpened} />
-      }
     </>
   )
 }

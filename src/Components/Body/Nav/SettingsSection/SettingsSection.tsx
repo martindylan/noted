@@ -3,7 +3,7 @@ import styles from './SettingsSection.module.scss';
 import textButton from '../../../../Resources/SASS/textButton.module.scss'
 import { useGlobal } from '../../../../GlobalContext';
 import { saveAs } from 'file-saver';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useRef } from 'react';
 
 interface ISettingsSectionProps {
   isOpen: (open: boolean) => void;
@@ -11,8 +11,13 @@ interface ISettingsSectionProps {
 
 const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
   const { global, setGlobal } = useGlobal();
+  const importRef = useRef<HTMLInputElement>(null);
+
   const deleteNotes = () => {
-    const confirmation = window.confirm('Are you sure you want to delete your notes? This will be permanent.\nRemember you can always export your notes.')
+    const confirmation = window.confirm(
+      'Are you sure you want to delete your data?\n' +
+      'You will lose your notes unless you export them.'
+    )
     if (!confirmation) return;
     window.localStorage.clear();
     window.location.reload();
@@ -37,19 +42,18 @@ const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
   }
 
   const changeTheme = (e: any) => {
-    setGlobal({...global, themeSelect: e.target.value});
+    setGlobal({ ...global, themeSelect: e.target.value });
   }
 
   return (
     <WindowedSection isOpen={props.isOpen} title='Settings'>
       <div className={styles.centeredButtons}>
-        <button onClick={deleteNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Delete notes</button>
-        <button onClick={exportNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Export notes</button>
-        {/* <button onClick={importNotes} className={textButton.textButton}>Import notes</button> */}
-        <label className={`${styles.loadFile} ${textButton.textButton} ${textButton[global.theme]}`}>
-          Import notes
-          <input type='file' accept='.txt' onChange={importNotes}></input>
-        </label>
+        <button onClick={deleteNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Delete data</button>
+        <button onClick={exportNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Export data</button>
+        <button onClick={() => { importRef.current?.click() }} className={`${styles.loadFile} ${textButton.textButton} ${textButton[global.theme]}`}>
+          Import data
+          <input ref={importRef} type='file' accept='.txt' onChange={importNotes}></input>
+        </button>
       </div>
       <br></br>
       <label htmlFor='themeSelect'>Theme: </label>

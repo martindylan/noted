@@ -14,13 +14,13 @@
 .ItemTypeMenu {
   position: absolute;
   z-index: 2;
-  border-radius: 0.3em;
-  padding: 0.2em;
-  margin-left: calc(-100% + 0.3em);
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  margin-left: calc(-100% - 0.35rem);
   transition: 100ms;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 1em 0.2em;
+  box-shadow: 0 0 1rem 0.2rem;
 
   &.dark {
     background: colors.$hhl-dark;
@@ -33,24 +33,24 @@
   }
 
   &.fromToolsUp {
-    transform: translateY(calc(-100% - 0.5em));
+    transform: translateY(calc(-100% - 0.5rem));
   }
 
   &.fromToolsDown {
-    transform: translateY(calc(2em));
+    transform: translateY(calc(1.75rem));
   }
 
   @include tablet {
-    margin-left: -2.3em;
+    margin-left: calc(-50% - 0.2rem);
   }
 
   button {
     background: none;
     border: none;
     margin: 0;
-    margin: 0.1em;
-    padding: 0.2em;
-    border-radius: 0.3em;
+    margin: 0.1rem;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
     align-items: center;
     display: flex;
     transition-duration: 100ms;
@@ -59,11 +59,10 @@
   }
 
   img {
-    width: 2em;
+    width: 2rem;
     aspect-ratio: 1/1;
     user-select: none;
     align-self: center;
-    padding: 0.1em;
 
     &.dark {
       filter: invert(0%);
@@ -76,11 +75,15 @@
 }
 
 .notFromTools {
-  margin-left: 2em;
-  transform: translateY(calc(-100% + 1.55em));
+  margin-left: 1.75rem;
+  transform: translateY(calc(-100% + 1.3rem));
 }
 
 .enabled {
+  img {
+    opacity: 1;
+  }
+
   &:hover {
     cursor: pointer;
 

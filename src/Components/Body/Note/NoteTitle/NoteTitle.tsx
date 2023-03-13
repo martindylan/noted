@@ -37,7 +37,7 @@ const NoteTitle: FunctionComponent = () => {
     if (input) {
       input.style.width = input.value.length + 'ch';
       input.style.height = 'auto';
-      input.style.height = `calc(${input.scrollHeight}px - 0.75ch`;
+      input.style.height = `calc(${input.scrollHeight}px - ${getComputedStyle(input).paddingTop}`;
     };
   }
 

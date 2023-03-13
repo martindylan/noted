@@ -1,7 +1,12 @@
+@use '../../../../../../Resources/SASS/mixins.scss' as *;
+
 .Tools {
   display: flex;
-  position: relative;
   margin-left: 0.5em;
+
+  @include tablet {
+    position: relative;
+  }
 
   button {
     margin-right: 0.1em;
@@ -30,15 +35,15 @@
   opacity: 0;
 }
 
-.hidden img.first {
+.hidden .first {
   transform: translateY(1em);
 }
 
-.hidden img.second {
+.hidden .second {
   transform: translateY(1.25em);
 }
 
-.hidden img.last {
+.hidden .last {
   transform: translateY(1.5em);
 }
 
