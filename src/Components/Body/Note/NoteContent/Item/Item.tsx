@@ -183,7 +183,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
   return (
     <div ref={mainRef} className={styles.Item}>
       {type === 'bulleted' &&
-        <div className={styles.bulleted}><div className={`${inputTextBox.bullet} ${inputTextBox[global.theme]}`}></div></div>}
+        <div className={inputTextBox.bulleted}><div className={`${inputTextBox.bullet} ${inputTextBox[global.theme]}`}></div></div>}
 
       {type === 'checkbox' &&
         <div className={`${inputTextBox.checkbox} ${inputTextBox['checked' + checked]} ${inputTextBox[global.theme]}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>}
