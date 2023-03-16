@@ -8,6 +8,7 @@ import moveImg from '../../../../../../Resources/Img/move.png'
 import ItemTypeMenu from '../../../../../UI/ItemTypeMenu/ItemTypeMenu';
 import { useGlobal } from '../../../../../../GlobalContext';
 
+
 type ToolsProps = {
   visibility: string;
   id: number;
@@ -46,7 +47,9 @@ const Tools: FunctionComponent<ToolsProps> = (props) => {
         <button className={`${styles.clickable} ${button.button} ${styles.second} ${button[global.theme]}`} onClick={(e) => setShowChangeType(true)}><img className={`${button[global.theme]}`} draggable="false" src={changeImg} alt="change"></img></button>
         <ItemTypeMenu visibility={showChangeType} sendTypeToParent={getType} id={id} fromTools={true} />
       </div>
-      <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button} ${styles.last} ${button[global.theme]}`}><img className={`${button[global.theme]}`} draggable="false" src={moveImg} alt="move"></img></button>
+      {window.screen.width >= 768 &&
+        <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button} ${styles.last} ${button[global.theme]}`}><img className={`${button[global.theme]}`} draggable="false" src={moveImg} alt="move"></img></button>
+      }
     </div>
   )
 }

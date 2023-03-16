@@ -178,7 +178,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
     updateElements();
   }, [note.items])
 
-  const dragEnterStyle = draggedOver ? styles.draggedOver : styles.notDraggedOver;
+  const dragEnterStyle = draggedOver ? inputTextBox.draggedOver : inputTextBox.notDraggedOver;
 
   return (
     <div ref={mainRef} className={styles.Item}>
@@ -188,10 +188,14 @@ const Item: FunctionComponent<IItemProps> = (props) => {
       {type === 'checkbox' &&
         <div className={`${inputTextBox.checkbox} ${inputTextBox['checked' + checked]} ${inputTextBox[global.theme]}`}><input ref={checkboxRef} type="checkbox" onClick={toggle}></input></div>}
 
-      <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
-
+      {type === 'none' &&
+        <div onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} className={`${styles.input} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></div>
+      }
       {type !== 'none' &&
-        <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType} />
+        <>
+          <textarea onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
+          <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType} />
+        </>
       }
     </div >
   )
