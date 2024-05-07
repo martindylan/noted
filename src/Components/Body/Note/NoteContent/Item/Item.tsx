@@ -192,7 +192,7 @@ const Item: FunctionComponent<IItemProps> = (props) => {
 
       {type === 'none'
         ? <div onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop} className={`${styles.input} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></div>
-        : <div style={{ display: 'flex', width: '100%' }} onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop}>
+        : <div style={{ display: 'flex', width: '0', flexGrow: 1 }} onDragOver={(e) => { e.preventDefault() }} onDragEnter={dragEnter} onDragLeave={dragLeave} onDrop={dragDrop}>
           <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]} ${dragEnterStyle}`} placeholder='...'></textarea>
           <Tools visibility={toolVisibility} id={id} removeItem={props.removeItem} changeType={changeType} />
         </div>
