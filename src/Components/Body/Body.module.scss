@@ -17,4 +17,44 @@
   &.light {
     background-color: colors.$hl-light;
   }
+
+  .flower {
+    position: absolute;
+
+    .dark {
+      &.bg {
+        fill: colors.$bg-dark;
+      }
+
+      &.hhl {
+        fill: colors.$hhl-dark;
+      }
+
+      &.hl {
+        fill: colors.$hl-dark;
+      }
+
+      &.fg {
+        fill: colors.$fg-dark;
+      }
+    }
+
+    .light {
+      &.bg {
+        fill: colors.$bg-light;
+      }
+
+      &.hhl {
+        fill: colors.$hhl-light;
+      }
+
+      &.hl {
+        fill: colors.$hl-light;
+      }
+
+      &.fg {
+        fill: colors.$fg-light;
+      }
+    }
+  }
 }
