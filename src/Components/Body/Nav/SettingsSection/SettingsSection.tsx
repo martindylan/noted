@@ -39,6 +39,7 @@ const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
         props.isOpen(false);
       }
     }
+    window.location.reload();
   }
 
   const changeTheme = (e: any) => {
