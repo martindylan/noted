@@ -9,7 +9,7 @@ export default function Body() {
   const currentNote = global.currentNote;
 
   return (
-    <div className={styles.Body}>
+    <div className={`${styles.Body} ${styles[global.theme]}`}>
       <Nav />
       {global.notes[currentNote] && <Note key={currentNote} note={currentNote}></Note>}
       {!global.notes[currentNote] && <h2>{'<'}- add some notes!</h2>}

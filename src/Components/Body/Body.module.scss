@@ -1,3 +1,5 @@
+@use '../../Resources/SASS/colors.scss';
+
 .Body {
   display: flex;
   flex-grow: 1;
@@ -6,5 +8,13 @@
 
   h2 {
     margin-left: 1em;
+  }
+
+  &.dark {
+    background-color: colors.$shadow-dark;
+  }
+
+  &.light {
+    background-color: colors.$hl-light;
   }
 }

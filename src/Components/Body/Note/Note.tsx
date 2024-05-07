@@ -15,7 +15,7 @@ const Note: FunctionComponent<INoteProps> = (props) => {
   const { global } = useGlobal();
 
   return (
-    <div className={`${styles.Note}`} >
+    <div className={`${styles.Note} ${styles[global.theme]}`} >
       <NoteContextProvider note={props.note}>
         <div className={`${scrollable.scrollable} ${scrollable[global.theme]}`} style={{ overflowX: 'hidden' }}>
           <NoteTitle></NoteTitle>
