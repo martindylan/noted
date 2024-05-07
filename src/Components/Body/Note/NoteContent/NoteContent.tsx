@@ -19,8 +19,10 @@ export default function NoteContent() {
 
   // Remove item
   const removeItem = (id: number) => {
-    const confirmation = window.confirm('Are you sure you want to delete this item?');
-    if (!confirmation) return;
+    if (note.items[id].content != "") {
+      const confirmation = window.confirm('Are you sure you want to delete this item?');
+      if (!confirmation) return;
+    };
     let newItems = [...note.items];
     newItems.splice(id, 1);
     setNote({ ...note, items: newItems, focus: id - 1 });
