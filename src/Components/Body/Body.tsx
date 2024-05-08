@@ -13,7 +13,7 @@ export default function Body() {
       <Nav />
       {global.notes[currentNote] && <Note key={currentNote} note={currentNote}></Note>}
       {!global.notes[currentNote] && <h2>{'<'}- add some notes!</h2>}
-      <div style={{ display: 'flex', flexGrow: 1, filter: 'hue-rotate(336deg)', overflow: 'hidden' }}>
+      <div style={{ display: 'flex', flexGrow: 1, filter: global.theme == 'dark' ? 'sepia()  hue-rotate(254deg)' : ' hue-rotate(336deg)', overflow: 'hidden' }}>
         <svg viewBox="13 -4 461 455" xmlns="http://www.w3.org/2000/svg" className={styles.flower} style={{ width: '240px', height: '240px', transform: 'translate(-50%, -50%)' }}>
           <g>
             <g transform="matrix(1.013029, -2.172449, 0.805123, 0.375435, -239.771591, 474.13916)">
