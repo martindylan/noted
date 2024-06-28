@@ -16,20 +16,27 @@ export default function NoteContent() {
   }
 
   const onDragEnd = (e: DropResult) => {
-    if (!e.destination || e.source.index === e.destination.index) return;
+    const source = e.source.index;
+    const destination = e.destination?.index;
 
-    let newItems = [...note.items];
-    const droppedItem = { ...note.items[e.source.index] };
-
-    if (e.destination.index > e.source.index) {
-      newItems.splice(e.destination.index + 1, 0, droppedItem);
-      newItems.splice(e.source.index, 1);
-    } else {
-      newItems.splice(e.destination.index, 0, droppedItem);
-      newItems.splice(e.source.index + 1, 1);
+    // if there's no drag destination, or source and destination index are the same, set isDragging to false and return function
+    if ((destination === null || destination === undefined) || source === destination) {
+      setNote((prev) => ({ ...prev, isDragging: false }))
+      return;
     }
 
-    setNote({ ...note, items: newItems, focus: e.destination.index, isDragging: false });
+    let newItems = [...note.items];
+    const droppedItem = { ...note.items[source] };
+
+    if (destination > source) {
+      newItems.splice(destination + 1, 0, droppedItem);
+      newItems.splice(source, 1);
+    } else {
+      newItems.splice(destination, 0, droppedItem);
+      newItems.splice(source + 1, 1);
+    }
+
+    setNote((prev) => ({ ...prev, items: newItems, focus: destination, isDragging: false }));
   }
 
   // Add item
