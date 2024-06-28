@@ -31,7 +31,6 @@ const Item = (props: IItemProps) => {
   // Show/hide item's tools
   const showTools = (e: MouseEvent | FocusEvent) => {
     const element = e.currentTarget as any;
-    console.log(element.contains(e.relatedTarget));
     if (!element.contains(e.relatedTarget as HTMLDivElement)) {
       setToolVisibility('visible');
     }
