@@ -8,7 +8,7 @@ interface IAboutSectionProps {
 
 const AboutSection = (props: IAboutSectionProps) => {
   return (
-    <WindowedSection title='About' open={props.open} setOpen={props.setOpen}>
+    <WindowedSection title='About' isOpen={props.open} close={() => props.setOpen(false)}>
       <div>noted! is a web app for taking notes and saving them locally.</div>
       <div>It was built with React and TypeScript, and <a href='https://github.com/martindylan/noted' target='_blank' rel='noreferrer'>here's a link</a> to the source code.</div>
       <hr></hr>

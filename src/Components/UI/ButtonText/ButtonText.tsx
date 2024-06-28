@@ -1,7 +1,19 @@
-import React from 'react'
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import styles from './ButtonText.module.scss';
+import { useGlobal } from '../../../GlobalContext';
 
-export default function ButtonText() {
+
+
+export default function ButtonText(props: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
+  const { children, } = props;
+  const { global } = useGlobal();
+
   return (
-    <div>ButtonText</div>
+    <button
+      {...props}
+      className={`${styles.ButtonText} ${styles[global.theme]} ${props.className}`}
+    >
+      {children}
+    </button>
   )
 }

@@ -26,7 +26,7 @@ const Tools = (props: ToolsProps) => {
   const { show, item, index, provided, removeItem, changeType } = props;
 
   const remove = () => {
-    removeItem(item.id);
+    removeItem(index);
   }
 
   const getType = (type: string) => {

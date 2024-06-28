@@ -15,12 +15,13 @@ interface IItemProps {
   addItem: (type: string, pos: number) => void;
   removeItem: (id: number) => void;
   scrollToBottom: () => void;
+  setDeleteIndex: (id: number) => void;
 }
 
 const Item = (props: IItemProps) => {
   const [toolVisibility, setToolVisibility] = useState('hidden');
   const { note, setNote } = useNote();
-  const { index, item, focus, addItem, removeItem, scrollToBottom } = props;
+  const { index, item, focus, addItem, removeItem, setDeleteIndex, scrollToBottom } = props;
   const { checked } = item;
   const { global } = useGlobal();
 
@@ -175,7 +176,7 @@ const Item = (props: IItemProps) => {
               :
               <div style={{ display: 'flex', width: '0', flexGrow: 1 }} onDragOver={(e) => { e.preventDefault() }}>
                 <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[item.type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]}`} placeholder='...'></textarea>
-                <Tools show={note.isDragging ? 'hidden' : toolVisibility} item={item} index={index} removeItem={removeItem} changeType={changeType} provided={provided} />
+                <Tools show={note.isDragging ? 'hidden' : toolVisibility} item={item} index={index} removeItem={item.content == "" ? removeItem : setDeleteIndex} changeType={changeType} provided={provided} />
               </div>
             }
           </div>

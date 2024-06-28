@@ -1,10 +1,10 @@
 import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
 import styles from './SettingsSection.module.scss';
-import textButton from '../../../../Resources/SASS/textButton.module.scss'
 import { useGlobal } from '../../../../GlobalContext';
 import { saveAs } from 'file-saver';
 import React, { useRef } from 'react';
 import { GlobalType } from '../../../../types';
+import ButtonText from '../../../UI/ButtonText/ButtonText';
 
 interface ISettingsSectionProps {
   open: boolean;
@@ -61,14 +61,14 @@ const SettingsSection = (props: ISettingsSectionProps) => {
   }
 
   return (
-    <WindowedSection open={props.open} setOpen={props.setOpen} title='Settings'>
+    <WindowedSection isOpen={props.open} close={() => props.setOpen(false)} title='Settings'>
       <div className={styles.centeredButtons}>
-        <button onClick={deleteNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Delete data</button>
-        <button onClick={exportNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Export data</button>
-        <button onClick={() => { importRef.current?.click() }} className={`${styles.loadFile} ${textButton.textButton} ${textButton[global.theme]}`}>
+        <ButtonText onClick={deleteNotes}>Delete data</ButtonText>
+        <ButtonText onClick={exportNotes}>Export data</ButtonText>
+        <ButtonText onClick={() => { importRef.current?.click() }} className={styles.loadFile}>
           Import data
           <input ref={importRef} type='file' accept='.txt' onChange={importNotes}></input>
-        </button>
+        </ButtonText>
       </div>
       <br></br>
       <label htmlFor='themeSelect'>Theme: </label>

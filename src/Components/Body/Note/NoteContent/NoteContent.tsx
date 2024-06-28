@@ -3,12 +3,15 @@ import styles from './NoteContent.module.scss';
 // Components
 import Item from './Item/Item';
 import AddItem from './AddItem/AddItem';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { DragDropContext, DragStart, DropResult, Droppable } from '@hello-pangea/dnd';
 import { ItemType, NoteType } from '../../../../types';
+import ModalPrompt from '../../../UI/Modals/ModalPrompt';
 
 export default function NoteContent() {
   const { note, setNote } = useNote();
+  const [deleteIndex, setDeleteIndex] = useState(-1);
+
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const onDragStart = (e: DragStart) => {
@@ -49,14 +52,11 @@ export default function NoteContent() {
   }
 
   // Remove item
-  const removeItem = (id: number) => {
-    if (note.items.find((item: ItemType) => item.id === id)?.content !== "") {
-      const confirmation = window.confirm('Are you sure you want to delete this item?');
-      if (!confirmation) return;
-    };
+  const removeItem = (index: number) => {
     let newItems = [...note.items];
-    newItems.splice(id, 1);
-    setNote({ ...note, items: newItems, focus: id - 1 });
+    newItems.splice(index, 1);
+    setDeleteIndex(-1);
+    setNote({ ...note, items: newItems, focus: index - 1 });
   }
 
   // Scroll to bottom of note content
@@ -65,20 +65,31 @@ export default function NoteContent() {
   }
 
   return (
-    <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-      <Droppable droppableId={`${note.id}`} type='NOTE'>
-        {(provided, snapshot) => (
-          <div className={styles.NoteContent} ref={provided.innerRef} {...provided.droppableProps}>
-            {note.items.map((item: ItemType, i: number) => {
-              const isFocused = note.focus === i;
-              return <Item key={item.id} index={i} item={item} focus={isFocused} removeItem={removeItem} addItem={addItem} scrollToBottom={scrollToBottom} />
-            })}
-            {provided.placeholder}
-            <AddItem addItem={addItem} />
-            <div ref={bottomRef}></div>
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <>
+      <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+        <Droppable droppableId={`${note.id}`} type='NOTE'>
+          {(provided, snapshot) => (
+            <div className={styles.NoteContent} ref={provided.innerRef} {...provided.droppableProps}>
+              {note.items.map((item: ItemType, i: number) => {
+                const isFocused = note.focus === i;
+                return <Item key={item.id} index={i} item={item} focus={isFocused} removeItem={removeItem} addItem={addItem} setDeleteIndex={setDeleteIndex} scrollToBottom={scrollToBottom} />
+              })}
+              {provided.placeholder}
+              <AddItem addItem={addItem} />
+              <div ref={bottomRef}></div>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      <ModalPrompt
+        title='Warning'
+        prompt='Are you sure you want to delete this item?'
+        acceptText='Delete'
+        isOpen={deleteIndex > -1}
+        background='rgba(0,0,0,0)'
+        close={() => setDeleteIndex(-1)}
+        onAccept={() => removeItem(deleteIndex)}
+      />
+    </>
   )
 }
