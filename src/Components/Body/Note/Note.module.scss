@@ -8,6 +8,7 @@
   flex-direction: column;
   padding-bottom: 0.5em;
   z-index: 10;
+  gap: 16px;
 
   &.dark {
     background-color: colors.$bg-dark;

@@ -1,4 +1,3 @@
-import { FunctionComponent } from 'react';
 import styles from './Note.module.scss';
 import scrollable from '../../../Resources/SASS/scrollable.module.scss';
 // Components
@@ -17,7 +16,7 @@ const Note = (props: INoteProps) => {
   return (
     <div className={`${styles.Note} ${styles[global.theme]}`} >
       <NoteContextProvider index={props.note}>
-        <div className={`${scrollable.scrollable} ${scrollable[global.theme]}`} style={{ overflowX: 'hidden' }}>
+        <div className={`${scrollable.scrollable} ${scrollable[global.theme]}`} style={{ overflowX: 'hidden', gap: '16px' }}>
           <NoteTitle></NoteTitle>
           <NoteContent></NoteContent>
         </div>
