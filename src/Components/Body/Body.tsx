@@ -12,7 +12,7 @@ export default function Body() {
     <div className={`${styles.Body} ${styles[global.theme]}`}>
       <Nav />
       {global.notes[currentNote] && <Note key={currentNote} note={currentNote}></Note>}
-      {!global.notes[currentNote] && <h2>{'<'}- add some notes!</h2>}
+      {!global.notes.length && <h2 style={{ margin: 0, padding: '1em' }}>{'<'}- add some notes!</h2>}
       <div style={{ display: 'flex', flexGrow: 1, filter: global.theme == 'dark' ? 'sepia()  hue-rotate(254deg)' : ' hue-rotate(336deg)', overflow: 'hidden' }}>
         <svg viewBox="13 -4 461 455" xmlns="http://www.w3.org/2000/svg" className={styles.flower} style={{ width: '240px', height: '240px', transform: 'translate(-50%, -50%)' }}>
           <g>
