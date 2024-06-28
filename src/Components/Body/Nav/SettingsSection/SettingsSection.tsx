@@ -7,7 +7,8 @@ import React, { useRef } from 'react';
 import { GlobalType } from '../../../../types';
 
 interface ISettingsSectionProps {
-  isOpen: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
 const SettingsSection = (props: ISettingsSectionProps) => {
@@ -48,7 +49,7 @@ const SettingsSection = (props: ISettingsSectionProps) => {
           }
         }
         setGlobal(newGlobal);
-        props.isOpen(false);
+        props.setOpen(false);
       }
     }
     window.location.reload();
@@ -60,7 +61,7 @@ const SettingsSection = (props: ISettingsSectionProps) => {
   }
 
   return (
-    <WindowedSection isOpen={props.isOpen} title='Settings'>
+    <WindowedSection open={props.open} setOpen={props.setOpen} title='Settings'>
       <div className={styles.centeredButtons}>
         <button onClick={deleteNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Delete data</button>
         <button onClick={exportNotes} className={`${textButton.textButton} ${textButton[global.theme]}`}>Export data</button>

@@ -192,30 +192,3 @@
     opacity: 1;
   }
 }
-
-.greyedout {
-  position: fixed;
-  z-index: 40;
-  width: 200vw;
-  height: 200vh;
-  transform: translateY(-50vh);
-  user-select: none;
-  animation-name: greyedShow;
-  animation-duration: 200ms;
-
-  .dark & {
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  .light & {
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  .wired & {
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  .sakura & {
-    background: rgba(0, 0, 0, 0.2);
-  }
-}

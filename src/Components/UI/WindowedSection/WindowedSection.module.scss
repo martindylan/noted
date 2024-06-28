@@ -138,3 +138,30 @@
     font-weight: bold;
   }
 }
+
+.greyedout {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+  animation-name: greyedShow;
+  animation-duration: 200ms;
+
+  &.dark {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &.light {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &.wired {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &.sakura {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}

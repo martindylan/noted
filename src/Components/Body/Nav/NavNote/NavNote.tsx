@@ -4,6 +4,7 @@ import styles from './NavNote.module.scss';
 import editImg from '../../../../Resources/Img/edit.png';
 import trashcanImg from '../../../../Resources/Img/trashcan.png';
 import button from '../../../../Resources/SASS/button.module.scss';
+import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
 
 interface INavNoteProps {
   note: number;
@@ -52,6 +53,9 @@ const NavNote = (props: INavNoteProps) => {
           <button className={`${button.button} ${button[global.theme]} ${styles.editButton}`} onClick={editNote}><img className={button[global.theme]} src={editImg} alt='edit'></img></button>
         </>
       }
+      <WindowedSection open={false} setOpen={()=>{}}>
+        xd
+      </WindowedSection>
     </div>
   )
 }

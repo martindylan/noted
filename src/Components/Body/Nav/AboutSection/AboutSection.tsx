@@ -2,12 +2,13 @@ import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
 import styles from './AboutSection.module.scss';
 
 interface IAboutSectionProps {
-  isOpen: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
 const AboutSection = (props: IAboutSectionProps) => {
   return (
-    <WindowedSection title='About' isOpen={props.isOpen}>
+    <WindowedSection title='About' open={props.open} setOpen={props.setOpen}>
       <div>noted! is a web app for taking notes and saving them locally.</div>
       <div>It was built with React and TypeScript, and <a href='https://github.com/martindylan/noted' target='_blank' rel='noreferrer'>here's a link</a> to the source code.</div>
       <hr></hr>

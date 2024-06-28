@@ -36,7 +36,6 @@ export default function Nav() {
   return (
     <>
       <div className={`${styles.Nav} ${styles[global.theme]} ${global.dropDown ? styles.dropped : ''}`}>
-        {(settingsOpened || aboutOpened) && <div onClick={() => { setSettingsOpened(false); setAboutOpened(false); }} className={`${styles.greyedout} ${styles.show}`}></div>}
         <div className={`${styles.list} ${scrollable.scrollable} ${scrollable[global.theme]}`}>
           {notes.map((note: NoteType, i: number) => {
             return <NavNote key={note.id} note={i}></NavNote>;
@@ -45,13 +44,9 @@ export default function Nav() {
         </div>
         <div className={styles.bottom}>
           <button onClick={openSettings} className={styles.link}><img src={settingsImg} alt='Settings'></img></button>
-          {settingsOpened &&
-            <SettingsSection isOpen={setSettingsOpened} />
-          }
+          <SettingsSection open={settingsOpened} setOpen={setSettingsOpened}/>
           <button onClick={openAbout} className={styles.link}><img src={aboutImg} alt='About'></img></button>
-          {aboutOpened &&
-            <AboutSection isOpen={setAboutOpened} />
-          }
+          <AboutSection open={aboutOpened} setOpen={setAboutOpened} />
         </div>
       </div>
     </>
