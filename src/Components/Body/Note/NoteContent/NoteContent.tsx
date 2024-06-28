@@ -40,8 +40,9 @@ export default function NoteContent() {
   }
 
   // Add item
-  const addItem = (type: string, pos: number | null) => {
+  const addItem = (type: string, pos?: number) => {
     let newItems = [...note.items];
+    // if no item position is given, add item at the end of the note
     let i = pos ? pos : newItems.length;
     newItems.splice(i, 0, { content: '', type: type, checked: false, id: new Date().getTime() });
     setNote({ ...note, items: newItems, focus: i });

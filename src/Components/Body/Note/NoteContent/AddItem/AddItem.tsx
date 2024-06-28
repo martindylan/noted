@@ -6,7 +6,7 @@ import addImg from '../../../../../Resources/Img/add.png';
 import { useGlobal } from '../../../../../GlobalContext';
 
 interface IAddItemProps {
-  addItem: (type: string, pos: number | null) => void;
+  addItem: (type: string) => void;
 }
 
 const AddItem = (props: IAddItemProps) => {
@@ -18,8 +18,8 @@ const AddItem = (props: IAddItemProps) => {
     setActive(true);
   }
 
-  const getItemType = (type: string, pos: number | null) => {
-    if (type) props.addItem(type, null);
+  const getItemType = (type: string) => {
+    props.addItem(type);
     setActive(false);
   }
 
@@ -38,7 +38,7 @@ const AddItem = (props: IAddItemProps) => {
   return (
     <div onBlur={focusOut} onKeyDown={keyDown} className={styles.AddItem}>
       <button className={`${button.button} ${button[global.theme]}`} onClick={activate}><img className={button[global.theme]} src={addImg} alt='+'></img></button>
-      <ItemTypeMenu sendTypeToParent={getItemType} visibility={active} id={null} fromTools={false} />
+      <ItemTypeMenu changeType={getItemType} visibility={active} item={null} index={null} />
     </div>
   )
 }

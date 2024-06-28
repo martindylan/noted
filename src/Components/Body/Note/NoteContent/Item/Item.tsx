@@ -12,7 +12,7 @@ interface IItemProps {
   index: number;
   item: ItemType;
   focus: boolean;
-  addItem: (type: string, pos: number | null) => void;
+  addItem: (type: string, pos: number) => void;
   removeItem: (id: number) => void;
   scrollToBottom: () => void;
 }
@@ -175,7 +175,7 @@ const Item = (props: IItemProps) => {
               :
               <div style={{ display: 'flex', width: '0', flexGrow: 1 }} onDragOver={(e) => { e.preventDefault() }}>
                 <textarea rows={1} ref={inputRef} className={`${styles.input} ${inputTextBox.inputTextBox} ${inputTextBox[item.type]} ${inputTextBox[checked ? 'checked' : '']} ${inputTextBox[global.theme]}`} placeholder='...'></textarea>
-                <Tools show={note.isDragging ? 'hidden' : toolVisibility} id={item.id} removeItem={removeItem} changeType={changeType} provided={provided} />
+                <Tools show={note.isDragging ? 'hidden' : toolVisibility} item={item} index={index} removeItem={removeItem} changeType={changeType} provided={provided} />
               </div>
             }
           </div>
