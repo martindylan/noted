@@ -4,6 +4,7 @@ import textButton from '../../../../Resources/SASS/textButton.module.scss'
 import { useGlobal } from '../../../../GlobalContext';
 import { saveAs } from 'file-saver';
 import React, { useRef } from 'react';
+import { GlobalType } from '../../../../types';
 
 interface ISettingsSectionProps {
   isOpen: (open: boolean) => void;
@@ -37,7 +38,16 @@ const SettingsSection = (props: ISettingsSectionProps) => {
     fr.readAsText(input.files[0]);
     fr.onload = () => {
       if (typeof fr.result === 'string') {
-        setGlobal(JSON.parse(fr.result));
+        const newGlobal: GlobalType = JSON.parse(fr.result);
+        for (let i = 0; i < newGlobal.notes.length; i++) {
+          const notes = newGlobal.notes[i];
+          if (!notes.id) notes.id = new Date().getTime() + i;
+          for (let j = 0; j < notes.items.length; j++) {
+            const item = notes.items[j];
+            if (!item.id) item.id = new Date().getTime() + j;
+          }
+        }
+        setGlobal(newGlobal);
         props.isOpen(false);
       }
     }
