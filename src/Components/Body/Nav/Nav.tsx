@@ -44,11 +44,11 @@ export default function Nav() {
         </div>
         <div className={styles.bottom}>
           <button onClick={openSettings} className={styles.link}><img src={settingsImg} alt='Settings'></img></button>
-          <SettingsSection open={settingsOpened} setOpen={setSettingsOpened}/>
           <button onClick={openAbout} className={styles.link}><img src={aboutImg} alt='About'></img></button>
-          <AboutSection open={aboutOpened} setOpen={setAboutOpened} />
         </div>
       </div>
+      <SettingsSection open={settingsOpened} setOpen={setSettingsOpened}/>
+      <AboutSection open={aboutOpened} setOpen={setAboutOpened} />
     </>
   )
 }
