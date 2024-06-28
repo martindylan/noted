@@ -130,23 +130,6 @@ input[type="checkbox"] {
   }
 }
 
-.draggedOver {
-  border-bottom: 3px solid;
-
-  &.dark {
-    border-color: colors.$fg-dark;
-  }
-
-  &.light {
-    border-color: colors.$hl-light;
-  }
-
-}
-
-.notDraggedOver {
-  border-bottom: 0 solid transparent;
-}
-
 .none {
   display: block;
   width: 100%;

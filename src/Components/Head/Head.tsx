@@ -1,15 +1,15 @@
-import React from 'react';
 import styles from './Head.module.scss';
 import dropDownImg from '../../Resources/Img/dropdown.png';
 import closeImg from '../../Resources/Img/close.png';
 import { useGlobal } from '../../GlobalContext';
+import { GlobalType } from '../../types';
 
 export default function Head() {
 
   const { global, setGlobal } = useGlobal();
 
   const dropDown = () => {
-    setGlobal({ ...global, dropDown: !global.dropDown });
+    setGlobal((prev: GlobalType) => ({ ...prev, dropDown: !prev.dropDown }));
   }
 
   return (

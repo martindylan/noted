@@ -6,25 +6,26 @@ import bulleted from './img/bulleted.png';
 import checkbox from './img/checkbox.png';
 import { useNote } from '../../Body/Note/NoteContext';
 import { useGlobal } from '../../../GlobalContext';
+import { ItemType } from '../../../types';
 
-interface IItemTypeMenu {
+interface IItemTypeMenuProps {
   sendTypeToParent: (type: string, pos: number | null) => void;
   id: number | null;
   visibility: boolean;
   fromTools: boolean;
 }
 
-const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
+const ItemTypeMenu = (props: IItemTypeMenuProps) => {
 
   const { global } = useGlobal();
   const { note } = useNote();
-  const id = props.id;
-  const [type, setType] = useState(id !== null ? note.items[id].type : null);
-  const sendType = props.sendTypeToParent;
+  const { id, sendTypeToParent, visibility, fromTools } = props;
+  const [type, setType] = useState(id !== null ? note.items.find((item: ItemType) => item.id === id)?.type : null);
+  const sendType = sendTypeToParent;
 
   useEffect(() => {
-    setType(id !== null ? note.items[id].type : null);
-  }, [id !== null ? note.items[id].type : null])
+    setType(id !== null ? note.items.find((item: ItemType) => item.id === id)?.type : null);
+  }, [id !== null ? note.items.find((item: ItemType) => item.id === id)?.type : null])
 
   const isText = id !== null && type === 'text';
   const isHeading = id !== null && type === 'heading';
@@ -32,16 +33,16 @@ const ItemTypeMenu: FunctionComponent<IItemTypeMenu> = (props) => {
   const isCheckbox = id !== null && type === 'checkbox';
 
   let fromToolsStyle;
-  if (props.fromTools && id !== null) {
+  if (fromTools && id !== null) {
     fromToolsStyle = id > 1 ? styles.fromToolsUp : styles.fromToolsDown;
   } else {
     fromToolsStyle = styles.notFromTools;
   }
   return (
     <>
-      {props.visibility &&
+      {visibility &&
         <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`}>
-          {/* <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`} style={{ visibility: props.visibility ? 'visible' : 'hidden', opacity: props.visibility ? 1 : 0 }}> */}
+          {/* <div className={`${styles.ItemTypeMenu} ${styles[global.theme]} ${fromToolsStyle}`} style={{ visibility: visibility ? 'visible' : 'hidden', opacity: visibility ? 1 : 0 }}> */}
           <div className={styles.row}>
             <button className={isText ? styles.disabled : styles.enabled} disabled={isText} onClick={() => sendType('text', id ? id : null)}>
               <img className={styles[global.theme]} src={text} alt='text' draggable="false" />

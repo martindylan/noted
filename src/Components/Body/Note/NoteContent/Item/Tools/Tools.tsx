@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Tools.module.scss';
 import button from '../../../../../../Resources/SASS/button.module.scss';
 // Resources
@@ -7,49 +7,44 @@ import changeImg from '../../../../../../Resources/Img/change.png';
 import moveImg from '../../../../../../Resources/Img/move.png'
 import ItemTypeMenu from '../../../../../UI/ItemTypeMenu/ItemTypeMenu';
 import { useGlobal } from '../../../../../../GlobalContext';
+import { DraggableProvided } from '@hello-pangea/dnd';
 
 
 type ToolsProps = {
-  visibility: string;
+  show: string;
   id: number;
+  provided: DraggableProvided;
   removeItem: (id: number) => void;
   changeType: (newType: string) => void;
 }
 
-const Tools: FunctionComponent<ToolsProps> = (props) => {
-
+const Tools = (props: ToolsProps) => {
   const [showChangeType, setShowChangeType] = useState(false);
   const { global } = useGlobal();
-  const id = props.id;
+  const { show, id, provided, removeItem, changeType } = props;
 
   const remove = () => {
-    props.removeItem(id);
+    removeItem(id);
   }
 
   const getType = (type: string) => {
-    props.changeType(type);
+    changeType(type);
   }
 
-  const focusOut = (e: any) => {
+  const focusOut = (e: React.FocusEvent<HTMLDivElement>) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setShowChangeType(false);
     }
   }
 
-  const drag = (e: any) => {
-    e.dataTransfer.setData('text/plain', 'itemId:' + id);
-  }
-
   return (
-    <div className={`${styles.Tools} ${styles[props.visibility]}`}>
-      <button className={`${styles.clickable} ${button.button} ${styles.first} ${button[global.theme]}`} onClick={remove}><img className={`${button[global.theme]}`} draggable="false" src={trashcanImg} alt="delete"></img></button>
+    <div className={`${styles.Tools} ${styles[show]}`}>
+      <button className={`${styles.clickable} ${button.button} ${styles.first} ${button[global.theme]}`} onClick={remove}><img className={`${button[global.theme]}`} src={trashcanImg} alt="delete" draggable="false"></img></button>
       <div className={styles.changeType} onBlur={focusOut}>
-        <button className={`${styles.clickable} ${button.button} ${styles.second} ${button[global.theme]}`} onClick={(e) => setShowChangeType(true)}><img className={`${button[global.theme]}`} draggable="false" src={changeImg} alt="change"></img></button>
+        <button className={`${styles.clickable} ${button.button} ${styles.second} ${button[global.theme]}`} onClick={(e) => setShowChangeType(true)}><img className={`${button[global.theme]}`} src={changeImg} alt="change" draggable="false"></img></button>
         <ItemTypeMenu visibility={showChangeType} sendTypeToParent={getType} id={id} fromTools={true} />
       </div>
-      {window.screen.width >= 768 &&
-        <button draggable onDragStart={drag} className={`${styles.draggable} ${button.button} ${styles.last} ${button[global.theme]}`}><img className={`${button[global.theme]}`} draggable="false" src={moveImg} alt="move"></img></button>
-      }
+      <div {...provided.dragHandleProps} className={`${styles.draggable} ${button.button} ${styles.last} ${button[global.theme]}`}><img className={`${button[global.theme]}`} src={moveImg} alt="move" draggable="false"></img></div>
     </div>
   )
 }
