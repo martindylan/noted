@@ -1,31 +1,37 @@
-import { useContext, createContext, useState, FunctionComponent, useEffect } from 'react'
-import { useGlobal } from '../../../GlobalContext';
+import { useContext, createContext, useState, useEffect, PropsWithChildren } from 'react'
+import { defaultGlobal, useGlobal } from '../../../GlobalContext';
+import { NoteType } from '../../../types';
 
+type NoteContextType = {
+  note: NoteType,
+  setNote: React.Dispatch<React.SetStateAction<NoteType>>
+}
 
-const NoteContext = createContext<any>(null);
+const NoteContext = createContext<NoteContextType>({ note: defaultGlobal.notes[0], setNote: () => { } });
 
 export function useNote() {
   return useContext(NoteContext);
 }
 
 type NoteContextProviderProps = {
-  children: any;
-  note: number;
+  index: number;
 }
-export const NoteContextProvider: FunctionComponent<NoteContextProviderProps> = (props) => {
+
+export const NoteContextProvider = (props: PropsWithChildren<NoteContextProviderProps>) => {
   const { global, setGlobal } = useGlobal();
   const notes = global.notes;
-  const [note, setNote] = useState({ ...notes[props.note] });
+  const { index, children } = props;
+  const [note, setNote] = useState({ ...notes[index] });
 
   useEffect(() => {
     let newNotes = [...global.notes];
-    newNotes[props.note] = note;
+    newNotes[index] = note;
     setGlobal({ ...global, notes: newNotes });
   }, [note])
 
   return (
     <NoteContext.Provider value={{ note: note, setNote: setNote }}>
-      {props.children}
+      {children}
     </NoteContext.Provider>
   )
 }

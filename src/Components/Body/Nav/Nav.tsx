@@ -8,6 +8,7 @@ import AboutSection from './AboutSection/AboutSection';
 import SettingsSection from './SettingsSection/SettingsSection';
 import settingsImg from '../../../Resources/Img/settings.png';
 import aboutImg from '../../../Resources/Img/about.png';
+import { NoteType } from '../../../types';
 
 export default function Nav() {
   const [settingsOpened, setSettingsOpened] = useState(false);
@@ -19,7 +20,7 @@ export default function Nav() {
     const newNotes = [...notes];
     const newTitle = prompt('Give your note a fancy title:');
     if (!newTitle) return;
-    newNotes.push({ title: newTitle, focus: 0, items: [{ content: '', type: 'text', }] });
+    newNotes.push({ title: newTitle, focus: 0, id: new Date().getTime(), isDragging: false, items: [{ content: '', type: 'text', checked: false, id: new Date().getTime() }] });
     const newCurrent = newNotes.length - 1;
     setGlobal({ ...global, notes: newNotes, currentNote: newCurrent, dropDown: false });
   }
@@ -31,14 +32,14 @@ export default function Nav() {
   const openAbout = () => {
     setAboutOpened(true);
   }
-
+  
   return (
     <>
       <div className={`${styles.Nav} ${styles[global.theme]} ${global.dropDown ? styles.dropped : ''}`}>
         {(settingsOpened || aboutOpened) && <div onClick={() => { setSettingsOpened(false); setAboutOpened(false); }} className={`${styles.greyedout} ${styles.show}`}></div>}
         <div className={`${styles.list} ${scrollable.scrollable} ${scrollable[global.theme]}`}>
-          {notes.map((note: object, i: number) => {
-            return <NavNote key={i} note={i}></NavNote>;
+          {notes.map((note: NoteType, i: number) => {
+            return <NavNote key={note.id} note={i}></NavNote>;
           })}
           <AddNote addNote={addNote} />
         </div>

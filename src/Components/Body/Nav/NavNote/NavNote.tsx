@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useGlobal } from '../../../../GlobalContext';
 import styles from './NavNote.module.scss';
 import editImg from '../../../../Resources/Img/edit.png';
@@ -9,7 +9,7 @@ interface INavNoteProps {
   note: number;
 }
 
-const NavNote: FunctionComponent<INavNoteProps> = (props) => {
+const NavNote = (props: INavNoteProps) => {
 
   const { global, setGlobal } = useGlobal();
 
@@ -36,7 +36,7 @@ const NavNote: FunctionComponent<INavNoteProps> = (props) => {
     setGlobal({ ...global, currentNote: note, dropDown: false });
   }
 
-  const keyDown = (e: any) => {
+  const keyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
     selectNote();

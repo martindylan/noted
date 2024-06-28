@@ -8,7 +8,7 @@ interface IAddNoteProps {
   addNote: () => void;
 }
 
-const AddNote: FunctionComponent<IAddNoteProps> = (props) => {
+const AddNote = (props: IAddNoteProps) => {
 
   const {global} = useGlobal();
 

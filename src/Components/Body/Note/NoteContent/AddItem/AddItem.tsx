@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { useState } from 'react';
 import ItemTypeMenu from '../../../../UI/ItemTypeMenu/ItemTypeMenu';
 import styles from './AddItem.module.scss';
 import button from '../../../../../Resources/SASS/button.module.scss';
@@ -9,7 +9,7 @@ interface IAddItemProps {
   addItem: (type: string, pos: number | null) => void;
 }
 
-const AddItem: FunctionComponent<IAddItemProps> = (props) => {
+const AddItem = (props: IAddItemProps) => {
 
   const [active, setActive] = useState(false);
   const { global } = useGlobal();
@@ -23,13 +23,13 @@ const AddItem: FunctionComponent<IAddItemProps> = (props) => {
     setActive(false);
   }
 
-  const focusOut = (e: any) => {
+  const focusOut = (e: React.FocusEvent<HTMLDivElement>) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setActive(false);
     }
   }
 
-  const keyDown = (e: any) => {
+  const keyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Escape') {
       setActive(false);
     }

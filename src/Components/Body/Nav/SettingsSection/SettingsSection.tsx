@@ -3,13 +3,13 @@ import styles from './SettingsSection.module.scss';
 import textButton from '../../../../Resources/SASS/textButton.module.scss'
 import { useGlobal } from '../../../../GlobalContext';
 import { saveAs } from 'file-saver';
-import { FunctionComponent, useRef } from 'react';
+import React, { useRef } from 'react';
 
 interface ISettingsSectionProps {
   isOpen: (open: boolean) => void;
 }
 
-const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
+const SettingsSection = (props: ISettingsSectionProps) => {
   const { global, setGlobal } = useGlobal();
   const importRef = useRef<HTMLInputElement>(null);
 
@@ -30,9 +30,11 @@ const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
     saveAs(blob, name);
   }
 
-  const importNotes = (e: any) => {
+  const importNotes = (e: React.ChangeEvent<HTMLDivElement>) => {
+    const input = e.target as HTMLInputElement;
+    if (!input.files) return;
     let fr = new FileReader();
-    fr.readAsText(e.target.files[0]);
+    fr.readAsText(input.files[0]);
     fr.onload = () => {
       if (typeof fr.result === 'string') {
         setGlobal(JSON.parse(fr.result));
@@ -42,8 +44,9 @@ const SettingsSection: FunctionComponent<ISettingsSectionProps> = (props) => {
     window.location.reload();
   }
 
-  const changeTheme = (e: any) => {
-    setGlobal({ ...global, themeSelect: e.target.value });
+  const changeTheme = (e: React.FormEvent<HTMLSelectElement>) => {
+    const select = e.target as HTMLSelectElement;
+    setGlobal({ ...global, themeSelect: select.value });
   }
 
   return (

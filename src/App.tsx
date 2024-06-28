@@ -7,10 +7,12 @@ import { useGlobal } from './GlobalContext';
 
 function App() {
   const [height, setHeight] = useState(window.innerHeight);
-  const { global, setGlobal } = useGlobal();
+  const { global } = useGlobal();
 
-  const updateHeight = (e: any) => {
-    setHeight(e.target.innerHeight);
+  const updateHeight = (e: UIEvent) => {
+    const window = e.target as Window;
+    if (!window) return;
+    setHeight(window.innerHeight);
   }
 
   useEffect(() => {

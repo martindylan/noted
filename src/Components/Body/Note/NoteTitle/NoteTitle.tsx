@@ -1,10 +1,10 @@
-import { FunctionComponent, useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { useNote } from '../NoteContext';
 import styles from './NoteTitle.module.scss';
 import inputTextBox from '../../../../Resources/SASS/inputTextBox.module.scss';
 import { useGlobal } from '../../../../GlobalContext';
 
-const NoteTitle: FunctionComponent = () => {
+const NoteTitle = () => {
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { note, setNote } = useNote();
@@ -24,9 +24,10 @@ const NoteTitle: FunctionComponent = () => {
   }, [])
 
   // Updates the items object according to input's inner text
-  const updateItems = useCallback((e: any) => {
+  const updateItems = useCallback((e: Event) => {
+    const textArea = e.target as HTMLTextAreaElement;
     let newTitle = note.title;
-    newTitle = e.target.value;
+    newTitle = textArea.value;
     setNote({ ...note, title: newTitle });
     resize();
   }, [note, setNote]);

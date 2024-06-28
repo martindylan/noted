@@ -11,12 +11,12 @@ interface INoteProps {
   note: number;
 }
 
-const Note: FunctionComponent<INoteProps> = (props) => {
+const Note = (props: INoteProps) => {
   const { global } = useGlobal();
 
   return (
     <div className={`${styles.Note} ${styles[global.theme]}`} >
-      <NoteContextProvider note={props.note}>
+      <NoteContextProvider index={props.note}>
         <div className={`${scrollable.scrollable} ${scrollable[global.theme]}`} style={{ overflowX: 'hidden' }}>
           <NoteTitle></NoteTitle>
           <NoteContent></NoteContent>
