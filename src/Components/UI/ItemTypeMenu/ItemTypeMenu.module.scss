@@ -40,8 +40,14 @@
     transform: translateY(calc(1.75rem));
   }
 
+  &.notFromTools {
+    margin-left: 1.75rem;
+    transform: translateY(calc(-100% + 1.3rem));
+  }
+
   @include tablet {
-    margin-left: calc(-50% - 0.2rem);
+    position: fixed;
+    margin: 0;
   }
 
   button {
@@ -72,11 +78,6 @@
       filter: invert(100%);
     }
   }
-}
-
-.notFromTools {
-  margin-left: 1.75rem;
-  transform: translateY(calc(-100% + 1.3rem));
 }
 
 .enabled {
