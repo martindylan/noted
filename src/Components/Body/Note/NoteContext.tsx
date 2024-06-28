@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect, PropsWithChildren } from 'react'
-import { defaultGlobal, useGlobal } from '../../../GlobalContext';
-import { NoteType } from '../../../types';
+import { defaultGlobal, useGlobal } from 'GlobalContext';
+import { NoteType } from 'types';
 
 type NoteContextType = {
   note: NoteType,

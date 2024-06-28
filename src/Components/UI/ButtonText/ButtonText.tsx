@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import styles from './ButtonText.module.scss';
-import { useGlobal } from '../../../GlobalContext';
+import { useGlobal } from 'GlobalContext';
 
 
 

@@ -1,8 +1,8 @@
 import styles from './Head.module.scss';
-import dropDownImg from '../../Resources/Img/dropdown.png';
-import closeImg from '../../Resources/Img/close.png';
-import { useGlobal } from '../../GlobalContext';
-import { GlobalType } from '../../types';
+import dropDownImg from 'Resources/Img/dropdown.png';
+import closeImg from 'Resources/Img/close.png';
+import { useGlobal } from 'GlobalContext';
+import { GlobalType } from 'types';
 
 export default function Head() {
 

@@ -1,10 +1,10 @@
 import styles from './Note.module.scss';
-import scrollable from '../../../Resources/SASS/scrollable.module.scss';
+import scrollable from 'Resources/SASS/scrollable.module.scss';
 // Components
-import { NoteContextProvider } from './NoteContext';
-import NoteTitle from './NoteTitle/NoteTitle';
-import NoteContent from './NoteContent/NoteContent';
-import { useGlobal } from '../../../GlobalContext';
+import { NoteContextProvider } from 'Components/Body/Note/NoteContext';
+import NoteTitle from 'Components/Body/Note/NoteTitle/NoteTitle';
+import NoteContent from 'Components/Body/Note/NoteContent/NoteContent';
+import { useGlobal } from 'GlobalContext';
 
 interface INoteProps {
   note: number;

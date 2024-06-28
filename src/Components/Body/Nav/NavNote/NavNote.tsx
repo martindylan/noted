@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { useGlobal } from '../../../../GlobalContext';
+import { useGlobal } from 'GlobalContext';
 import styles from './NavNote.module.scss';
-import editImg from '../../../../Resources/Img/edit.png';
-import trashcanImg from '../../../../Resources/Img/trashcan.png';
-import button from '../../../../Resources/SASS/button.module.scss';
-import ModalPrompt from '../../../UI/Modals/ModalPrompt';
+import editImg from 'Resources/Img/edit.png';
+import trashcanImg from 'Resources/Img/trashcan.png';
+import button from 'Resources/SASS/button.module.scss';
+import ModalPrompt from 'Components/UI/Modals/ModalPrompt';
 
 interface INavNoteProps {
   note: number;

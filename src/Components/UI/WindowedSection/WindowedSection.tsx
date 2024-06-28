@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
-import styles from 'Components/UI/WindowedSection/WindowedSection.module.scss';
+import styles from './WindowedSection.module.scss';
 import closeImg from 'Resources/Img/close.png';
 import { useGlobal } from 'GlobalContext';
 

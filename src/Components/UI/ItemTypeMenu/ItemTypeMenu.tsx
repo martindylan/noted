@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './ItemTypeMenu.module.scss';
-import text from './img/text.png';
-import heading from './img/heading.png';
-import bulleted from './img/bulleted.png';
-import checkbox from './img/checkbox.png';
-import { useNote } from '../../Body/Note/NoteContext';
-import { useGlobal } from '../../../GlobalContext';
-import { ItemType } from '../../../types';
+import text from 'Components/UI/ItemTypeMenu/img/text.png';
+import heading from 'Components/UI/ItemTypeMenu/img/heading.png';
+import bulleted from 'Components/UI/ItemTypeMenu/img/bulleted.png';
+import checkbox from 'Components/UI/ItemTypeMenu/img/checkbox.png';
+import { useNote } from 'Components/Body/Note/NoteContext';
+import { useGlobal } from 'GlobalContext';
+import { ItemType } from 'types';
 
 interface IItemTypeMenuProps {
   changeType: (type: string) => void;

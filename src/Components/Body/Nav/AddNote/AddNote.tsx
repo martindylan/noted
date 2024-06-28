@@ -1,8 +1,7 @@
-import { FunctionComponent } from 'react';
 import styles from './AddNote.module.scss';
-import button from '../../../../Resources/SASS/button.module.scss';
-import addImg from '../../../../Resources/Img/add.png';
-import { useGlobal } from '../../../../GlobalContext';
+import button from 'Resources/SASS/button.module.scss';
+import addImg from 'Resources/Img/add.png';
+import { useGlobal } from 'GlobalContext';
 
 interface IAddNoteProps {
   addNote: () => void;

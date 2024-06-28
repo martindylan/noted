@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styles from './Tools.module.scss';
-import button from '../../../../../../Resources/SASS/button.module.scss';
+import button from 'Resources/SASS/button.module.scss';
 // Resources
-import trashcanImg from '../../../../../../Resources/Img/trashcan.png';
-import changeImg from '../../../../../../Resources/Img/change.png';
-import moveImg from '../../../../../../Resources/Img/move.png'
-import ItemTypeMenu from '../../../../../UI/ItemTypeMenu/ItemTypeMenu';
-import { useGlobal } from '../../../../../../GlobalContext';
+import trashcanImg from 'Resources/Img/trashcan.png';
+import changeImg from 'Resources/Img/change.png';
+import moveImg from 'Resources/Img/move.png'
+import ItemTypeMenu from 'Components/UI/ItemTypeMenu/ItemTypeMenu';
+import { useGlobal } from 'GlobalContext';
 import { DraggableProvided } from '@hello-pangea/dnd';
-import { ItemType } from '../../../../../../types';
+import { ItemType } from 'types';
 
 
 type ToolsProps = {

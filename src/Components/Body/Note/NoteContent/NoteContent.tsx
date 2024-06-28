@@ -1,12 +1,12 @@
-import { useNote } from '../NoteContext';
+import { useNote } from 'Components/Body/Note/NoteContext';
 import styles from './NoteContent.module.scss';
 // Components
-import Item from './Item/Item';
-import AddItem from './AddItem/AddItem';
+import Item from 'Components/Body/Note/NoteContent/Item/Item';
+import AddItem from 'Components/Body/Note/NoteContent/AddItem/AddItem';
 import { useRef, useState } from 'react';
 import { DragDropContext, DragStart, DropResult, Droppable } from '@hello-pangea/dnd';
-import { ItemType, NoteType } from '../../../../types';
-import ModalPrompt from '../../../UI/Modals/ModalPrompt';
+import { ItemType, NoteType } from 'types';
+import ModalPrompt from 'Components/UI/Modals/ModalPrompt';
 
 export default function NoteContent() {
   const { note, setNote } = useNote();

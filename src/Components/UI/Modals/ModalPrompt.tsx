@@ -1,5 +1,5 @@
-import WindowedSection from '../WindowedSection/WindowedSection';
-import ButtonText from '../ButtonText/ButtonText';
+import WindowedSection from 'Components/UI/WindowedSection/WindowedSection';
+import ButtonText from 'Components/UI/ButtonText/ButtonText';
 
 interface IConfirmActionProps {
   title?: string;

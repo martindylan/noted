@@ -1,10 +1,10 @@
-import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
+import WindowedSection from 'Components/UI/WindowedSection/WindowedSection';
 import styles from './SettingsSection.module.scss';
-import { useGlobal } from '../../../../GlobalContext';
+import { useGlobal } from 'GlobalContext';
 import { saveAs } from 'file-saver';
 import React, { useRef } from 'react';
-import { GlobalType } from '../../../../types';
-import ButtonText from '../../../UI/ButtonText/ButtonText';
+import { GlobalType } from 'types';
+import ButtonText from 'Components/UI/ButtonText/ButtonText';
 
 interface ISettingsSectionProps {
   open: boolean;

@@ -1,14 +1,14 @@
-import { useGlobal } from '../../../GlobalContext';
-import AddNote from './AddNote/AddNote';
+import { useGlobal } from 'GlobalContext';
+import AddNote from 'Components/Body/Nav/AddNote/AddNote';
 import styles from './Nav.module.scss'
-import scrollable from '../../../Resources/SASS/scrollable.module.scss';
-import NavNote from './NavNote/NavNote';
+import scrollable from 'Resources/SASS/scrollable.module.scss';
+import NavNote from 'Components/Body/Nav/NavNote/NavNote';
 import { useState } from 'react';
-import AboutSection from './AboutSection/AboutSection';
-import SettingsSection from './SettingsSection/SettingsSection';
-import settingsImg from '../../../Resources/Img/settings.png';
-import aboutImg from '../../../Resources/Img/about.png';
-import { NoteType } from '../../../types';
+import AboutSection from 'Components/Body/Nav/AboutSection/AboutSection';
+import SettingsSection from 'Components/Body/Nav/SettingsSection/SettingsSection';
+import settingsImg from 'Resources/Img/settings.png';
+import aboutImg from 'Resources/Img/about.png';
+import { NoteType } from 'types';
 
 export default function Nav() {
   const [settingsOpened, setSettingsOpened] = useState(false);

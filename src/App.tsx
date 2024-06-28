@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 // Components
-import Body from './Components/Body/Body';
-import Head from './Components/Head/Head';
-import { useGlobal } from './GlobalContext';
+import Body from 'Components/Body/Body';
+import Head from 'Components/Head/Head';
+import { useGlobal } from 'GlobalContext';
 
 function App() {
   const [height, setHeight] = useState(window.innerHeight);

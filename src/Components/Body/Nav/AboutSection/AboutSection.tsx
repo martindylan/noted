@@ -1,4 +1,4 @@
-import WindowedSection from '../../../UI/WindowedSection/WindowedSection';
+import WindowedSection from 'Components/UI/WindowedSection/WindowedSection';
 import styles from './AboutSection.module.scss';
 
 interface IAboutSectionProps {

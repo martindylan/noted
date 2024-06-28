@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useGlobal } from '../../../../../GlobalContext';
-import { useNote } from '../../NoteContext';
+import { useGlobal } from 'GlobalContext';
+import { useNote } from 'Components/Body/Note/NoteContext';
 import styles from './Item.module.scss';
-import inputTextBox from '../../../../../Resources/SASS/inputTextBox.module.scss';
+import inputTextBox from 'Resources/SASS/inputTextBox.module.scss';
 // Components
-import Tools from './Tools/Tools';
+import Tools from 'Components/Body/Note/NoteContent/Item/Tools/Tools';
 import { Draggable } from '@hello-pangea/dnd';
-import { ItemType, NoteType } from '../../../../../types';
+import { ItemType, NoteType } from 'types';
 
 interface IItemProps {
   index: number;

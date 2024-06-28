@@ -1,8 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react'
-import { useNote } from '../NoteContext';
+import { useNote } from 'Components/Body/Note/NoteContext';
 import styles from './NoteTitle.module.scss';
-import inputTextBox from '../../../../Resources/SASS/inputTextBox.module.scss';
-import { useGlobal } from '../../../../GlobalContext';
+import inputTextBox from 'Resources/SASS/inputTextBox.module.scss';
+import { useGlobal } from 'GlobalContext';
 
 const NoteTitle = () => {
 

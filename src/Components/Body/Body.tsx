@@ -1,8 +1,8 @@
-import { useGlobal } from '../../GlobalContext';
+import { useGlobal } from 'GlobalContext';
 import styles from './Body.module.scss';
 // Components
-import Nav from './Nav/Nav';
-import Note from './Note/Note';
+import Nav from 'Components/Body/Nav/Nav';
+import Note from 'Components/Body/Note/Note';
 
 export default function Body() {
   const { global } = useGlobal();

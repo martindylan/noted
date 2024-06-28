@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect, PropsWithChildren } from 'react'
-import { GlobalType } from './types';
+import { GlobalType } from 'types';
 
 // This is the structure of the data used by the app, with defaults in case the app wasn't used yet.
 export const defaultGlobal = {

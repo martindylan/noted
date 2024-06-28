@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import ItemTypeMenu from '../../../../UI/ItemTypeMenu/ItemTypeMenu';
+import ItemTypeMenu from 'Components/UI/ItemTypeMenu/ItemTypeMenu';
 import styles from './AddItem.module.scss';
-import button from '../../../../../Resources/SASS/button.module.scss';
-import addImg from '../../../../../Resources/Img/add.png';
-import { useGlobal } from '../../../../../GlobalContext';
+import button from 'Resources/SASS/button.module.scss';
+import addImg from 'Resources/Img/add.png';
+import { useGlobal } from 'GlobalContext';
 
 interface IAddItemProps {
   addItem: (type: string) => void;
