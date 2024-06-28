@@ -28,6 +28,16 @@
       color: colors.$fg-light;
     }
 
+    &.wired {
+      background: colors.$hl-wired;
+      color: colors.$fg-wired;
+    }
+
+    &.sakura {
+      background: colors.$hl-sakura;
+      color: colors.$fg-sakura;
+    }
+
     img {
       opacity: 1;
     }
@@ -46,6 +56,16 @@
       color: colors.$fg-light;
     }
 
+    &.wired {
+      background: colors.$hl-wired;
+      color: colors.$fg-wired;
+    }
+
+    &.sakura {
+      background: colors.$hl-sakura;
+      color: colors.$fg-sakura;
+    }
+
     img {
       opacity: 1;
     }
@@ -58,6 +78,10 @@
     transition-duration: 100ms;
 
     &.light {
+      filter: invert(100%);
+    }
+
+    &.sakura {
       filter: invert(100%);
     }
   }

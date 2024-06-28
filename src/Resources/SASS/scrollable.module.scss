@@ -16,4 +16,12 @@
     scrollbar-color: colors.$hl-light colors.$bg-light;
   }
 
+  &.wired {
+    scrollbar-color: colors.$hl-wired colors.$bg-wired;
+  }
+
+  &.sakura {
+    scrollbar-color: colors.$hl-sakura colors.$bg-sakura;
+  }
+
 }

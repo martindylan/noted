@@ -17,6 +17,16 @@
     color: colors.$fg-light;
   }
 
+  &.wired {
+    background: colors.$hl-wired;
+    color: colors.$fg-wired;
+  }
+
+  &.sakura {
+    background: colors.$hl-sakura;
+    color: colors.$fg-sakura;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -28,6 +38,14 @@
 
     &.light {
       outline: 1px solid colors.$fg-light;
+    }
+
+    &.wired {
+      outline: 1px solid colors.$fg-wired;
+    }
+
+    &.sakura {
+      outline: 1px solid colors.$fg-sakura;
     }
   }
 }

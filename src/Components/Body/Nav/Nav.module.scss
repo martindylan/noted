@@ -24,6 +24,16 @@
     border-color: colors.$hl-light;
   }
 
+  &.wired {
+    background-color: colors.$bg-wired;
+    border-color: colors.$hl-wired;
+  }
+
+  &.sakura {
+    background-color: colors.$bg-sakura;
+    border-color: colors.$hl-sakura;
+  }
+
   @include tablet {
     width: 30ch;
     position: static;
@@ -54,6 +64,14 @@
   .light & {
     border-color: colors.$hl-light;
   }
+
+  .wired & {
+    border-color: colors.$hl-wired;
+  }
+
+  .sakura & {
+    border-color: colors.$hl-sakura;
+  }
 }
 
 .bottom {
@@ -70,6 +88,14 @@
 
   .light & {
     background: colors.$hhl-light;
+  }
+
+  .wired & {
+    background: colors.$hhl-wired;
+  }
+
+  .sakura & {
+    background: colors.$hhl-sakura;
   }
 }
 
@@ -93,6 +119,14 @@
     color: colors.$fg-light;
   }
 
+  .wired & {
+    color: colors.$fg-wired;
+  }
+
+  .sakura & {
+    color: colors.$fg-sakura;
+  }
+
   &:hover {
     cursor: pointer;
     border-radius: 100%;
@@ -103,6 +137,14 @@
 
     .light & {
       background-color: colors.$hl-light;
+    }
+
+    .wired & {
+      background-color: colors.$hl-wired;
+    }
+
+    .sakura & {
+      background-color: colors.$hl-sakura;
     }
   }
 
@@ -116,6 +158,14 @@
     .light & {
       background-color: colors.$hl-light;
     }
+
+    .wired & {
+      background-color: colors.$hl-wired;
+    }
+
+    .sakura & {
+      background-color: colors.$hl-sakura;
+    }
   }
 
   img {
@@ -124,6 +174,10 @@
     box-sizing: border-box;
 
     .light & {
+      filter: invert(100%);
+    }
+
+    .sakura & {
       filter: invert(100%);
     }
   }
@@ -154,6 +208,14 @@
   }
 
   .light & {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .wired & {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .sakura & {
     background: rgba(0, 0, 0, 0.2);
   }
 }

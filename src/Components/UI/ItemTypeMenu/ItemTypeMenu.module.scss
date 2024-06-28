@@ -32,6 +32,16 @@
     color: colors.$shadow-light;
   }
 
+  &.wired {
+    background: colors.$hhl-wired;
+    color: colors.$shadow-wired;
+  }
+
+  &.sakura {
+    background: colors.$hl-sakura;
+    color: colors.$shadow-sakura;
+  }
+
   &.fromToolsUp {
     transform: translateY(calc(-100% - 0.5rem));
   }
@@ -77,6 +87,14 @@
     &.light {
       filter: invert(100%);
     }
+
+    &.wired {
+      filter: invert(0%);
+    }
+
+    &.sakura {
+      filter: invert(100%);
+    }
   }
 }
 
@@ -95,6 +113,14 @@
     .light & {
       background: colors.$hhl-light;
     }
+
+    .wired & {
+      background: colors.$hl-wired;
+    }
+
+    .sakura & {
+      background: colors.$hhl-sakura;
+    }
   }
 
   &:focus {
@@ -106,6 +132,14 @@
 
     .light & {
       background: colors.$hhl-light;
+    }
+
+    .wired & {
+      background: colors.$hl-wired;
+    }
+
+    .sakura & {
+      background: colors.$hhl-sakura;
     }
   }
 }

@@ -27,6 +27,18 @@
     box-shadow: 0 0 1rem 0.2rem rgba(0, 0, 0, 0.2);
   }
 
+  &.wired {
+    background: colors.$bg-wired;
+    border-color: colors.$hl-wired;
+    box-shadow: 0 0 1rem 0.2rem #000;
+  }
+
+  &.sakura {
+    background: colors.$bg-sakura;
+    border-color: colors.$hl-sakura;
+    box-shadow: 0 0 1rem 0.2rem rgba(0, 0, 0, 0.2);
+  }
+
   @include tablet {
     width: fit-content;
   }
@@ -60,6 +72,14 @@
     background: colors.$hhl-light;
   }
 
+  .wired & {
+    background: colors.$hhl-wired;
+  }
+
+  .sakura & {
+    background: colors.$hhl-sakura;
+  }
+
   h2 {
     display: inline;
     margin: 0;
@@ -85,6 +105,10 @@
       .light & {
         filter: invert(100%);
       }
+
+      .sakura & {
+        filter: invert(100%);
+      }
     }
   }
 }
@@ -92,14 +116,7 @@
 .content {
   padding: 1rem;
   border: none;
-
-  .dark & {
-    border-color: inherit;
-  }
-
-  .light & {
-    border-color: inherit;
-  }
+  border-color: inherit;
 
   a {
     .dark & {
@@ -108,6 +125,14 @@
 
     .light & {
       color: colors.$fg-light;
+    }
+
+    .wired & {
+      color: colors.$fg-wired;
+    }
+
+    .sakura & {
+      color: colors.$fg-sakura;
     }
 
     font-weight: bold;

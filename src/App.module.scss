@@ -15,4 +15,14 @@
     background: colors.$bg-light;
     color: colors.$fg-light;
   }
+
+  &.wired {
+    background: colors.$bg-wired;
+    color: colors.$fg-wired;
+  }
+
+  &.sakura {
+    background: colors.$bg-sakura;
+    color: colors.$fg-sakura;
+  }
 }

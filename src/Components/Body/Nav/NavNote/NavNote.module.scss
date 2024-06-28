@@ -26,6 +26,14 @@
     .light & {
       background: colors.$fg-light;
     }
+
+    .wired & {
+      background: colors.$fg-wired;
+    }
+
+    .sakura & {
+      background: colors.$fg-sakura;
+    }
   }
 }
 
@@ -45,6 +53,14 @@
       background: colors.$hl-light;
     }
 
+    .wired & {
+      background: colors.$hl-wired;
+    }
+
+    .sakura & {
+      background: colors.$hl-sakura;
+    }
+
     &:hover {
       .dark & {
         background: colors.$hl-dark;
@@ -52,6 +68,15 @@
 
       .light & {
         background: colors.$hl-light;
+      }
+
+      .wired & {
+        background: colors.$hl-wired;
+      }
+
+
+      .sakura & {
+        background: colors.$hl-sakura;
       }
     }
   }
@@ -65,6 +90,15 @@
 
     .light & {
       background: colors.$hhl-light;
+    }
+
+    .wired & {
+      background: colors.$hhl-wired;
+    }
+
+
+    .sakura & {
+      background: colors.$hhl-sakura;
     }
   }
 

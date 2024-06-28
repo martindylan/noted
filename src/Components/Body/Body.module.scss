@@ -18,6 +18,14 @@
     background-color: colors.$hl-light;
   }
 
+  &.wired {
+    background-color: colors.$hl-wired;
+  }
+
+  &.sakura {
+    background-color: colors.$hl-sakura;
+  }
+
   .flower {
     position: absolute;
     opacity: 0.9;
@@ -55,6 +63,42 @@
 
       &.fg {
         fill: colors.$fg-light;
+      }
+    }
+
+    .wired {
+      &.bg {
+        fill: colors.$bg-wired;
+      }
+
+      &.hhl {
+        fill: colors.$hhl-wired;
+      }
+
+      &.hl {
+        fill: colors.$hl-wired;
+      }
+
+      &.fg {
+        fill: colors.$fg-wired;
+      }
+    }
+
+    .sakura {
+      &.bg {
+        fill: colors.$bg-sakura;
+      }
+
+      &.hhl {
+        fill: colors.$hhl-sakura;
+      }
+
+      &.hl {
+        fill: colors.$hl-sakura;
+      }
+
+      &.fg {
+        fill: colors.$fg-sakura;
       }
     }
   }

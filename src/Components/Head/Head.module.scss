@@ -19,6 +19,16 @@
     background: colors.$hhl-light;
     border-color: colors.$hl-light;
   }
+
+  &.wired {
+    background: colors.$hhl-wired;
+    border-color: colors.$hl-wired;
+  }
+
+  &.sakura {
+    background: colors.$hhl-sakura;
+    border-color: colors.$hl-sakura;
+  }
 }
 
 .title {
@@ -55,10 +65,20 @@
   img {
     width: 2.5em;
     height: 2.5em;
+
     &.dark {
       filter: invert(0%);
     }
+
     &.light {
+      filter: invert(100%);
+    }
+
+    &.wired {
+      filter: invert(0%);
+    }
+
+    &.sakura {
       filter: invert(100%);
     }
   }

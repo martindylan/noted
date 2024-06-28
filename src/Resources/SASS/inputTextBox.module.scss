@@ -21,6 +21,14 @@
     color: colors.$fg-light;
   }
 
+  &.wired {
+    color: colors.$fg-wired;
+  }
+
+  &.sakura {
+    color: colors.$fg-sakura;
+  }
+
   &:hover {
     &.dark {
       background: colors.$hhl-dark;
@@ -28,6 +36,14 @@
 
     &.light {
       background: colors.$hhl-light;
+    }
+
+    &.wired {
+      background: colors.$hhl-wired;
+    }
+
+    &.sakura {
+      background: colors.$hhl-sakura;
     }
 
   }
@@ -41,6 +57,14 @@
 
     &.light {
       background: colors.$hl-light;
+    }
+
+    &.wired {
+      background: colors.$hl-wired;
+    }
+
+    &.sakura {
+      background: colors.$hl-sakura;
     }
   }
 }
@@ -72,6 +96,14 @@ div.bulleted, div.checkbox {
   &.light {
     background: colors.$fg-light;
   }
+
+  &.wired {
+    background: colors.$fg-wired;
+  }
+
+  &.sakura {
+    background: colors.$fg-sakura;
+  }
 }
 
 input[type="checkbox"] {
@@ -95,6 +127,14 @@ input[type="checkbox"] {
     border-color: colors.$fg-light;
   }
 
+  .wired & {
+    border-color: colors.$fg-wired;
+  }
+
+  .sakura & {
+    border-color: colors.$fg-sakura;
+  }
+
   &::before {
     content: "";
     width: 0.5rem;
@@ -108,6 +148,14 @@ input[type="checkbox"] {
 
     .light & {
       background: colors.$fg-light;
+    }
+
+    .wired & {
+      background: colors.$fg-wired;
+    }
+
+    .sakura & {
+      background: colors.$fg-sakura;
     }
   }
 
@@ -126,6 +174,14 @@ input[type="checkbox"] {
 
     &.light  {
       color: rgba(colors.$fg-light, 0.5);
+    }
+
+    &.wired  {
+      color: rgba(colors.$fg-wired, 0.5);
+    }
+
+    &.sakura  {
+      color: rgba(colors.$fg-sakura, 0.5);
     }
   }
 }

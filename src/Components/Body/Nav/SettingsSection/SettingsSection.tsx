@@ -75,6 +75,8 @@ const SettingsSection = (props: ISettingsSectionProps) => {
         <option value='system'>System preference</option>
         <option value='dark'>Dark</option>
         <option value='light'>Light</option>
+        <option value='wired'>Wired</option>
+        <option value='sakura'>Sakura</option>
       </select>
     </WindowedSection >
   )
